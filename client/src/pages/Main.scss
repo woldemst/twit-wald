@@ -1,0 +1,28 @@
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 100vh;
+
+    .aside-left{
+        width: 25%;
+        
+        .navigation-container {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .main-content{
+        width: 45%;
+    }
+    .aside-right {
+        width: 30%;
+    }
+}
+
+.main-column{
+    border-right: 1px solid black;
+    // width: calc(100% / 3);
+    padding: 0 20px;
+}
