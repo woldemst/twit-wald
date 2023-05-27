@@ -1,0 +1,62 @@
+// Colors
+$primary-color: #1da1f2;
+$text-color: #ffffff;
+
+// Button Styles
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 9999px;
+  font-size: 16px;
+  color: $text-color;
+
+  transition: background-color 0.3s ease-in-out;
+  margin-bottom: 30px;
+  cursor: pointer;
+
+
+  &:focus {
+    outline: none;
+    // box-shadow: 0 0 0 2px;
+  }
+
+  &-auth {
+    background-color: $primary-color;
+
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  
+
+    &:focus {
+      box-shadow: 0 0 0 2px lighten(#1da1f2, 20%);
+    }
+
+    &:active {
+      background-color: darken($primary-color, 20%);
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  &-close {
+    padding: 10px 15px;
+    color: #d9d9d9;
+    background: none;
+    margin: 10px;
+    font-size: 21px;
+
+    &:hover {
+      background-color: darken(#d9d9d9, 70%);
+    }
+  }
+
+  &-input-change {
+    background: none;
+    color: #1da1f2;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,27 @@
+// Colors
+$primary-color: #1da1f2;
+$border-color: #444242;
+$placeholder-color: #657786;
+
+input {
+  display: inline-block;
+  width: 100%;
+  padding: 18px;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  font-size: 16px;
+  color: $primary-color;
+  background-color: #000;
+  transition: border-color 0.3s ease-in-out;
+  margin-bottom: 30px;
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px $primary-color;
+  }
+}

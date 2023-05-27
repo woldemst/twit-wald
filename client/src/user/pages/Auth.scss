@@ -1,0 +1,33 @@
+.authentication__header {
+  color: white;
+  text-align: center;
+}
+
+.authentication {
+    max-width: 440px;
+    margin: 0 auto;
+    // position: absolute;
+
+  
+  form {
+    // margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .auth-headline{
+    color: #fff;
+  }
+
+  .use-email_container,
+  .use-phone_container{
+    text-align: right;
+
+    input {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+

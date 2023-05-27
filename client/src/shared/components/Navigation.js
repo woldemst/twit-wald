@@ -5,34 +5,26 @@ import Modal from "../UIElements/Modal";
 import Auth from "../../user/pages/Auth";
 
 const Navigation = (props) => {
-  // const [showButton, setShowButton] = useEffect(false)
   const [showAuthForm, setShowAuthForm] = useState(false);
 
-  const authHandler = () =>{
-    setShowAuthForm(true)
-  }
+  const openAuthHandler = () => setShowAuthForm(true);
+
+  const closeAuthHandler = () => setShowAuthForm(false);
 
   return (
     <>
       <Modal
         show={showAuthForm}
-        // onCancel={closeMapHandler}
-        header={props.address}
+        onCancel={closeAuthHandler}
         contentClass="place-item__modal-content"
         footerClass="place-item__modal-actions"
-        footer={<Button>CLOSE</Button>}
+        header={<Button content="✕" className="close" onClick={closeAuthHandler} />}
       >
         <Auth />
       </Modal>
 
       <div className="navigation-container">
-        <ul>
-
-          <Button
-            onClick={authHandler}
-            text="Log in"
-          />
-        </ul>
+          <Button onClick={openAuthHandler} content="Log in" />
       </div>
     </>
   );

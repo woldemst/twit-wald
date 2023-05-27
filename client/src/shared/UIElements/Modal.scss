@@ -1,20 +1,23 @@
-
-// #modal-hook{
-//     height: 100vh;
-
-// }   
 .modal {
-    width: 50%;
-    height: 50%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 0;
-    right: 0;
-    border: 1px solid #000;
+  // width: 600px;
+  // height: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  // background: rgba(0, 0, 0, 0.26);
 }
 
-.modal-content{
-  height: 100%;
+.modal-container {
+  width: 600px;
+  // height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: 20;
 }
