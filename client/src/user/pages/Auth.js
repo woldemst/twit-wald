@@ -53,6 +53,13 @@ const Auth = (props) => {
             </div>
           )}
 
+          <span className="date-of-birth">Date of birth</span>
+          <p className="notice">
+            This will not be shown publicly. Confirm your own age, even if this
+            account is for a business, a pet, or something else.
+          </p>
+
+
           <Button className="auth" content="Sign up" />
         </form>
       </Card>
