@@ -8,6 +8,16 @@
   background: #000;
   color: #fff;
   
+  .content{
+    display: flex;
+    width: 100%;
+
+    .main-feed{
+      width: 50%;
+      padding: 0;
+
+    }
+  }
 
 }
 

@@ -1,6 +1,8 @@
 import './Button.scss'
+// import arrowLeft from '../../images/arrow-left.svg'
 
 const Button = props => {
+
     return (
         <button
             className={`button button-${props.className}`}
@@ -9,6 +11,8 @@ const Button = props => {
             disabled={props.disabled}
 
         >
+
+            
             {props.content}
         </button>
     )

@@ -1,7 +1,9 @@
 import { useState } from "react";
 
+// import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/validators";
+
 import Card from "../../shared/UIElements/Card";
-import Input from "../../shared/FormElements/Input";
+import Input from '../../shared/FormElements/Input'
 import Button from "../../shared/FormElements/Button";
 
 import "./Auth.scss";
@@ -9,31 +11,56 @@ import "./Auth.scss";
 const Auth = (props) => {
   const [useEmail, setUseEmail] = useState(false);
 
-  const usePhoneHandler = () => setUseEmail(true);
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: ''
+  })
 
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }))
+    console.log(formData);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formData);
+  }
+
+
+  const usePhoneHandler = () => setUseEmail(true);
   const useEmailHandler = () => setUseEmail(false);
 
-  const authSubmitHandler = (event) => {
-    event.preventDefault();
-  };
 
   return (
     <>
       <Card className="authentication">
         <h1 className="auth-headline">Create an account</h1>
 
-        <form className="auth-form" onSubmit={authSubmitHandler}>
+        <form className="auth-form" onSubmit={handleSubmit}>
           <Input
             type="text"
-            id="name"
-            name="name"
+            id="userName"
+            name="userName"
             label="Name"
             placeholder="Name"
+            value={formData.userName}
+            onChange={handleChange}
+
           />
 
           {useEmail && (
             <div className="use-phone_container">
-              <Input type="tel" id="phone" name="phone" placeholder="Phone" />
+              <Input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Phone"
+              />
               <Button
                 className="input-change"
                 content="Use email instead"
@@ -44,7 +71,15 @@ const Auth = (props) => {
 
           {!useEmail && (
             <div className="use-email_container">
-              <Input type="email" id="email" name="email" placeholder="Email" />
+              <Input
+                type="email"
+                placeholder="Email address"
+                name="email"
+                id="email"
+                onChange={handleChange}
+                value={formData.email}
+
+              />
               <Button
                 className="input-change"
                 content="Use phone instead"

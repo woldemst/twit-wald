@@ -1,15 +1,15 @@
-import LogingWindow from '../shared/components/LogingWindow';
+import LogingWindow from "../shared/components/LogingWindow";
 
-import './AsideRight.scss'
-
+import "./AsideRight.scss";
 
 const AsideRight = () => {
-    return (
-        <>
-
+  return (
+    <>
+      {/* <div className="column aside-right"> */}
         <LogingWindow />
-        </>
-    )
-}
+      {/* </div> */}
+    </>
+  );
+};
 
 export default AsideRight;

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import logo from "../../images/logo.svg";
-import Navigation from "./Navigation";
+import logo from '../../../images/logo.svg'
+import Navigation from "../Navigation";
 
-import './Header.scss'
+import './MainHeader.scss'
 
 const Header = () => {
   return (
@@ -13,10 +13,7 @@ const Header = () => {
           <img src={logo} alt="" className="logo" />
         </Link>
 
-        <ul>
-          <li>Explore</li>
-          <li>Settings</li>
-        </ul>
+
         <Navigation />
       </div>
     </>

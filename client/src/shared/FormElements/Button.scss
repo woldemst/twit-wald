@@ -11,9 +11,7 @@ $text-color: #ffffff;
   color: $text-color;
 
   transition: background-color 0.3s ease-in-out;
-  margin-bottom: 30px;
   cursor: pointer;
-
 
   &:focus {
     outline: none;
@@ -23,11 +21,9 @@ $text-color: #ffffff;
   &-auth {
     background-color: $primary-color;
 
-
     &:hover {
       background-color: darken($primary-color, 10%);
     }
-  
 
     &:focus {
       box-shadow: 0 0 0 2px lighten(#1da1f2, 20%);
@@ -54,9 +50,19 @@ $text-color: #ffffff;
     }
   }
 
-  &-log{
+  &-log {
     color: #000;
     width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &-back {
+    background: none;
+    &:hover{
+      background-color: #16181C;
+      transition: all .3s;
+
+  }
   }
 
   &-input-change {

@@ -1,5 +1,5 @@
 
-import Header from '../shared/components/Header';
+
 import './PrimaryColumn.scss'
 
 
