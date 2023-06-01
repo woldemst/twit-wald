@@ -48,7 +48,7 @@
     }
 }
 
-.profile-background__conteiner{
+.profile-background__container{
     .profile-background{
         .bg{
             max-height: 200px;
@@ -57,8 +57,96 @@
     }
 }
 
-.user-profile__image{
-    position: absolute;
-    top: 200px;
-    padding-left: 12px;
+
+
+.user-profile__info{
+    padding: 10px;
+    
+    .image-btn__container{
+        display: flex;
+        justify-content: space-between;
+
+        .user-profile__image{
+            img{
+                position: absolute;
+                top: 180px;
+            }
+        }
+    }
+
+    .profile-name__container{
+        .profile-name{
+            h3{
+                margin-bottom: 0;
+            }
+        }
+        .nick-name{
+            p{
+                margin: 0;
+                color: grey;
+            }
+        }
+    }
+
+    .registration-info{
+        padding: 10px 0;
+        color: grey;
+        display: flex;
+
+        .location-container{
+            display: flex;
+            margin-right: 10px;
+
+            .location-icon{
+                margin-right: 5px;
+
+
+
+            }
+        }  
+
+        .link-container{
+            display: flex;
+            margin-right: 10px;
+
+            
+            .link-icon{
+                margin-right: 5px;
+
+
+            }
+        }
+
+        .date-container{
+            display: flex;
+                margin-right: 10px;
+
+            .date-icon {
+                margin-right: 5px;
+            }
+        }
+
+    }
+
+    .folowers-info{
+        display: flex;
+        justify-content: space-between;
+        width: max-content;
+
+        .col{
+            padding-right: 10px;
+            display: flex   ;
+
+            .count{
+                padding-right: 5px;
+            }
+            .text{
+                color: gray;
+                margin: 0;
+
+            }
+        }
+    }
+
 }
+

@@ -9,6 +9,7 @@ $text-color: #ffffff;
   border-radius: 9999px;
   font-size: 16px;
   color: $text-color;
+  transition: all .1s;
 
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
@@ -17,6 +18,8 @@ $text-color: #ffffff;
     outline: none;
     // box-shadow: 0 0 0 2px;
   }
+
+
 
   &-auth {
     background-color: $primary-color;
@@ -69,5 +72,17 @@ $text-color: #ffffff;
     background: none;
     color: #1da1f2;
     font-weight: 600;
+  }
+
+  &-edit-profile{
+    background: none;
+    border: 1px solid;
+    font-weight: 600;
+
+    &:hover{
+      background-color: #1d2025;
+      transition: all .1s;
+  
+    }
   }
 }

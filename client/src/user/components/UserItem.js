@@ -1,37 +1,112 @@
+import { useState } from "react";
+
 import Button from "../../shared/FormElements/Button";
 import Avatar from "../../shared/UIElements/Avatar";
-import arrowLeft from '../../images/arrow-left.svg'
-import bg from '../../images/bg.jpg'
+import Modal from "../../shared/UIElements/Modal";
+import Auth from "./dialogs/Auth";
+import EditProfile from './dialogs/EditProfile'
+
+import bg from "../../images/bg.jpg";
 import "./UserItem.scss";
 
 const UserItem = (props) => {
-  // {console.log(props)}
+  const [showEditForm, setShowEditForm] = useState(false)
 
   return (
     <>
+      <Modal 
+        show={showEditForm}
+        contentClass='edit-item__modal-content'
+        header={
+          <Button 
+            content="✕"
+            className="close"
+            onClick={()=> setShowEditForm(false)}
+          />
+        }
+      >
+        <EditProfile />
+      </Modal>
+
       <div className="user-profile">
         <div className="user-profile__content">
-
           <div className="user-profile__header">
-
             <div className="back-btn__container">
               <Button content="<" className="back" />
             </div>
 
             <div className="header__user-info">
               <h3>{props.name}</h3>
-              <p className="tweet-count">{props.tweetCount} {props.tweetCount === 1 ? "tweet" : "tweets"}</p>
+              <p className="tweet-count">
+                {props.tweetCount} {props.tweetCount === 1 ? "tweet" : "tweets"}
+              </p>
             </div>
           </div>
-          <div className="profile-background__conteiner">
-              <div className="profile-background">
-                <img src={bg} alt="" className="bg" />
+          <div className="profile-background__container">
+            <div className="profile-background">
+              <img src={bg} alt="" className="bg" />
+            </div>
+          </div>
+
+          <div className="user-profile__info">
+            <div className="image-btn__container">
+
+              <div className="user-profile__image">
+                <Avatar image={props.image} alt={props.name} />
+              </div>
+
+              <div className="btn-container">
+                <Button 
+                  content="Edit profile" 
+                  className="edit-profile" 
+                  onClick={()=> setShowEditForm(true)}
+
+                  />
+              </div>
+
+            </div>
+            <div className="profile-name__container">
+              <div className="profile-name">
+                <h3>{props.name}</h3>
+              </div>
+              <div className="nick-name">
+                <p>@nickname</p>
               </div>
             </div>
-          <div className="user-profile__image">
-            <Avatar image={props.image} alt={props.name} />
+            <div className="bio-container">
+              <p className="bio-content">That's my official page</p>
+            </div>
+            <div className="registration-info">
+              <div className="location-container">
+                <div className="location-icon">*</div>
+                <div className="location">Germany</div>
+              </div>
+              <div className="link-container">
+                <div className="link-icon">*</div>
+                <a
+                  // href={props.link}
+                  href="#"
+                  className="link"
+                >
+                  github.com/woldemst
+                </a>
+              </div>
+              <div className="date-container">
+                <div className="date-icon">*</div>
+                <div className="date">Joined May 2023</div>
+              </div>
+            </div>
+            <div className="folowers-info">
+              <div className="col following-count">
+                <span className="count">20</span>
+                <p className="text">Following</p>
+              </div>
+              <div className="col followers-count">
+                <span className="count">0</span>
+                <p className="text">Followers</p>
+              </div>
+            </div>
           </div>
-          <div className="user-profile__info"></div>
         </div>
       </div>
     </>

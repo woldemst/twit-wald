@@ -2,9 +2,9 @@ import { useState } from "react";
 
 // import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/validators";
 
-import Card from "../../shared/UIElements/Card";
-import Input from '../../shared/FormElements/Input'
-import Button from "../../shared/FormElements/Button";
+import Card from "../../../shared/UIElements/Card";
+import Input from '../../../shared/FormElements/Input'
+import Button from "../../../shared/FormElements/Button";
 
 import "./Auth.scss";
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Button from "../FormElements/Button";
 import Modal from "../UIElements/Modal";
-import Auth from '../../user/pages/Auth'
+import Auth from '../../user/components/dialogs/Auth'
 
 import "./LogingWindow.scss";
 
@@ -20,7 +20,7 @@ const LogingWindow = () => {
           <Modal
             show={showAuthForm}
             onClose={() => setShowAuthForm(false)}
-            contentClass="place-item__modal-content"
+            contentClass="auth-item__modal-content"
             header={
               <Button
                 content="✕"
