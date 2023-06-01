@@ -18,11 +18,23 @@ const UserItem = (props) => {
         show={showEditForm}
         contentClass='edit-item__modal-content'
         header={
-          <Button 
-            content="✕"
-            className="close"
-            onClick={()=> setShowEditForm(false)}
-          />
+          <div className="btn-container">
+            <div className="close-btn">
+              <Button 
+                content="✕"
+                className="close"
+                onClick={()=> setShowEditForm(false)}
+              />
+            </div>
+            <div className="save-btn">
+              <Button
+                content="Save"
+                className="save-edits"
+
+              />
+
+            </div>
+          </div>
         }
       >
         <EditProfile />

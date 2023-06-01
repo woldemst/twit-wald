@@ -7,7 +7,15 @@
 
 
     .aside-left{
-        width: 25%;
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
+        
+        .header-main{
+
+            width: 230px;
+            
+        }
         
         .navigation-container {
             display: flex;
@@ -23,7 +31,11 @@
 }
 
 .column{
-    border-right: 1px solid #444242;;
-    // width: calc(100% / 3);
+    
+
     padding: 10px 20px;
+}
+
+.main-feed{
+    border: 1px solid #444242;;
 }

@@ -9,7 +9,7 @@ $text-color: #ffffff;
   border-radius: 9999px;
   font-size: 16px;
   color: $text-color;
-  transition: all .1s;
+  // transition: all .1s;
 
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
@@ -83,6 +83,16 @@ $text-color: #ffffff;
       background-color: #1d2025;
       transition: all .1s;
   
+    }
+  }
+
+  &-save-edits{
+    color: #000;
+    font-weight: 500;
+
+    &:hover {
+      background-color: darken(#d9d9d9, 10%);
+
     }
   }
 }
