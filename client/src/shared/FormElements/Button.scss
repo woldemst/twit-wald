@@ -5,14 +5,17 @@ $text-color: #ffffff;
 // Button Styles
 .button {
   padding: 10px 20px;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 9999px;
+  border: none;
   font-size: 16px;
-  color: $text-color;
-  // transition: all .1s;
-
-  transition: background-color 0.3s ease-in-out;
+  color: #ffffff;
+  max-height: 36px;
+  transition: all 0.1s;
   cursor: pointer;
+
 
   &:focus {
     outline: none;
@@ -42,7 +45,7 @@ $text-color: #ffffff;
   }
 
   &-close {
-    padding: 10px 15px;
+    padding: 5px 10px;
     color: #d9d9d9;
     background: none;
     margin: 10px;

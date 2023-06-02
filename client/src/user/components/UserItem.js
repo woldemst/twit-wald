@@ -3,7 +3,6 @@ import { useState } from "react";
 import Button from "../../shared/FormElements/Button";
 import Avatar from "../../shared/UIElements/Avatar";
 import Modal from "../../shared/UIElements/Modal";
-import Auth from "./dialogs/Auth";
 import EditProfile from './dialogs/EditProfile'
 
 import bg from "../../images/bg.jpg";
@@ -14,16 +13,16 @@ const UserItem = (props) => {
 
   return (
     <>
-      <Modal 
+      <Modal
         show={showEditForm}
         contentClass='edit-item__modal-content'
         header={
           <div className="btn-container">
             <div className="close-btn">
-              <Button 
+              <Button
                 content="✕"
                 className="close"
-                onClick={()=> setShowEditForm(false)}
+                onClick={() => setShowEditForm(false)}
               />
             </div>
             <div className="save-btn">
@@ -49,8 +48,8 @@ const UserItem = (props) => {
 
             <div className="header__user-info">
               <h3>{props.name}</h3>
-              <p className="tweet-count">
-                {props.tweetCount} {props.tweetCount === 1 ? "tweet" : "tweets"}
+              <p className="twitt-count">
+                {props.tweetCount} {props.tweetCount === 1 ? "twitt" : "tweets"}
               </p>
             </div>
           </div>
@@ -68,12 +67,12 @@ const UserItem = (props) => {
               </div>
 
               <div className="btn-container">
-                <Button 
-                  content="Edit profile" 
-                  className="edit-profile" 
-                  onClick={()=> setShowEditForm(true)}
+                <Button
+                  content="Edit profile"
+                  className="edit-profile"
+                  onClick={() => setShowEditForm(true)}
 
-                  />
+                />
               </div>
 
             </div>

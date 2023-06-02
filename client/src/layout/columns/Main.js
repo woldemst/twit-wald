@@ -1,4 +1,3 @@
-import AsideRight from "./AsideRight";
 import PrimaryColumn from "./PrimaryColumn";
 
 import "./Main.scss";

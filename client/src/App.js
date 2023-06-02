@@ -1,11 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Main from "./columns/Main";
-import UserProfile from "./user/pages/UserProfile";
-import AsideRight from "./columns/AsideRight";
-// import PrimaryColumn from './columns/PrimaryColumn'
-
-// import Auth from './user/pages/Auth';
+import Main from "./layout/columns/Main";
+import UserPage from "./user/pages/UserPage";
+import AsideRight from "./layout/columns/AsideRight";
 
 import "./App.scss";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
@@ -19,7 +16,7 @@ function App() {
           <div className="main-feed column">
             <Routes>
               <Route path="/" element={<Main />} exact />
-              <Route path="/profile" element={<UserProfile />} />
+              <Route path="/profile" element={<UserPage />} exact />
             </Routes>
           </div>
           <div className="column aside-right">

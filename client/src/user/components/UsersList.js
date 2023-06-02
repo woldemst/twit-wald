@@ -9,7 +9,7 @@ const UsersList = (props) => {
     );
   }
   return (
-    <ul className="user-container">
+    <div className="user-container">
       {props.items.map((user) => (
         <UserItem
           key={user.id}
@@ -19,7 +19,7 @@ const UsersList = (props) => {
           tweetCount={user.tweets}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 
