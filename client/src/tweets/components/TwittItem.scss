@@ -1,0 +1,55 @@
+
+
+.twitt-container{
+    display: flex;
+    padding: 10px;
+
+    .twitt-header{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .twitt-description__container{
+        margin: 8px 0;
+    }
+
+    .twit-actions__content{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .creator-image{
+        margin-right: 5px;
+    }
+
+    .twitt-content{
+        margin-right: 5px;
+    }
+
+    .creator-info{
+        display: flex;
+
+        .name{
+            margin: 0 5px 0 0;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .nickname{
+            margin: 0 5px 0 0;
+            color: grey;
+        }
+
+        .date{
+            margin: 0 5px 0 0;
+
+        }
+    }
+
+    .twitt-image__container{
+        img{
+            border-radius: 20px;
+            width: 100%;
+
+        }
+    }
+}

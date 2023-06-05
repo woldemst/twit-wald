@@ -1,21 +1,28 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../shared/FormElements/Button";
 import Avatar from "../../shared/UIElements/Avatar";
 import Modal from "../../shared/UIElements/Modal";
-import EditProfile from './dialogs/EditProfile'
+import EditProfile from "./dialogs/EditProfile";
 
 import bg from "../../images/bg.jpg";
 import "./UserItem.scss";
 
 const UserItem = (props) => {
-  const [showEditForm, setShowEditForm] = useState(false)
+  const [showEditForm, setShowEditForm] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <>
       <Modal
         show={showEditForm}
-        contentClass='edit-item__modal-content'
+        contentClass="edit-item__modal-content"
         header={
           <div className="btn-container">
             <div className="close-btn">
@@ -26,12 +33,7 @@ const UserItem = (props) => {
               />
             </div>
             <div className="save-btn">
-              <Button
-                content="Save"
-                className="save-edits"
-
-              />
-
+              <Button content="Save" className="save-edits" />
             </div>
           </div>
         }
@@ -43,7 +45,7 @@ const UserItem = (props) => {
         <div className="user-profile__content">
           <div className="user-profile__header">
             <div className="back-btn__container">
-              <Button content="<" className="back" />
+              <Button content="<" className="back" onClick={handleGoBack} />
             </div>
 
             <div className="header__user-info">
@@ -61,7 +63,6 @@ const UserItem = (props) => {
 
           <div className="user-profile__info">
             <div className="image-btn__container">
-
               <div className="user-profile__image">
                 <Avatar image={props.image} alt={props.name} />
               </div>
@@ -71,10 +72,8 @@ const UserItem = (props) => {
                   content="Edit profile"
                   className="edit-profile"
                   onClick={() => setShowEditForm(true)}
-
                 />
               </div>
-
             </div>
             <div className="profile-name__container">
               <div className="profile-name">

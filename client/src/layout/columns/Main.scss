@@ -3,17 +3,19 @@
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
-    height: 100vh;
+
 
 
     .aside-left{
-        width: 30%;
+        width: 25%;
         display: flex;
         justify-content: flex-end;
         
         .header-main{
-
             width: 230px;
+            height: max-content;
+            position: sticky;
+            top: 10px;
             
         }
         
