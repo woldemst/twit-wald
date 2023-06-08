@@ -18,17 +18,15 @@ const TwittItem = (props) => {
                 <span className="date">*{props.posted}</span>
               </div>
             </div>
-            <Button 
-                className='edit'
-                content={
-                    <>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    
-                    </>
-                }
-
+            <Button
+              className="edit"
+              content={
+                <>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </>
+              }
             />
           </div>
           <div className="twitt-description__container">

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Input.scss";
 
-
 const Input = (props) => {
   const [name, setName] = useState("");
   // const [email, setEmail] = useState('')
@@ -11,7 +10,21 @@ const Input = (props) => {
     // console.log(name);
   };
 
-  return <input placeholder={props.placeholder} type="text" name={name} onChange={handleNameChange} />;
+  return (
+    <>
+      <div className="input-container">
+        <label htmlFor={props.id}>{props.label}</label> 
+        <input
+          // placeholder={props.placeholder}
+          id={props.id}
+          type="text"
+          name={name}
+          onChange={handleNameChange}
+        />
+      </div>
+      ;
+    </>
+  );
 };
 
 export default Input;

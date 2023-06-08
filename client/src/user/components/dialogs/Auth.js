@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/validators";
+import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
 
 import Card from "../../../shared/UIElements/Card";
 import Input from '../../../shared/FormElements/Input'
@@ -47,6 +47,7 @@ const Auth = (props) => {
             id="userName"
             name="userName"
             label="Name"
+            validators={VALIDATOR_MINLENGTH(5)}
             placeholder="Name"
             value={formData.userName}
             onChange={handleChange}
@@ -75,6 +76,7 @@ const Auth = (props) => {
                 type="email"
                 placeholder="Email address"
                 name="email"
+                validators={[VALIDATOR_EMAIL()]}
                 id="email"
                 onChange={handleChange}
                 value={formData.email}

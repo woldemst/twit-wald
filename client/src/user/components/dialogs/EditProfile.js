@@ -1,7 +1,11 @@
 import Input from "../../../shared/FormElements/Input";
 import Card from "../../../shared/UIElements/Card";
 
+import { USERS } from "../../pages/UserProfile";
+
 const EditProfile = () =>{
+    console.log(USERS);
+    
     return(
         <>
             <Card className="edit-profile">
@@ -12,7 +16,7 @@ const EditProfile = () =>{
                         name='editUserName'
                         label='Name'
                         placeholder='Name'
-                        value="Waldemar"
+                        value=""
                     />
 
                     <Input 
@@ -20,7 +24,7 @@ const EditProfile = () =>{
                         id='editBio'
                         name='editBio'
                         label='Bio'
-                        placeholder="That's my official page"
+                        placeholder="Bio"
                         value=""
                     />
 
@@ -29,7 +33,7 @@ const EditProfile = () =>{
                         id='editLocation'
                         name='editLocation'
                         label='Location'
-                        placeholder="Germany"
+                        placeholder="Location"
                         value=""
                     />
 
@@ -38,7 +42,7 @@ const EditProfile = () =>{
                         id='editWebsite'
                         name='editWebsite'
                         label='Website'
-                        placeholder="https://github.com/woldemst"
+                        placeholder="Website"
                         value=""
                     />
 

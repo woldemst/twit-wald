@@ -3,25 +3,61 @@ $primary-color: #1da1f2;
 $border-color: #444242;
 $placeholder-color: #657786;
 
-input {
-  display: inline-block;
-  width: 100%;
-  padding: 18px;
+.input-container {
+  position: relative;
   border: 1px solid $border-color;
   border-radius: 4px;
-  font-size: 16px;
-  color: $primary-color;
-  background-color: #000;
-  transition: border-color 0.3s ease-in-out;
-  margin-bottom: 30px;
 
-  &::placeholder {
-    color: $placeholder-color;
+  label {
+    position: absolute;
+    color: #444242;
+    top: 30%;
+    left: 8px;
+    transition: all 0.2s;
   }
 
-  &:focus {
-    outline: none;
+  &:focus-within {
+    transition: all 0.2s;
+
     border-color: $primary-color;
     box-shadow: 0 0 0 2px $primary-color;
+  }
+
+  &:focus-within label {
+    font-size: 14px;
+    color: $primary-color;
+    top: 8px;
+
+    transition: all 0.2s;
+  }
+}
+
+input {
+  display: inline-block;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #000;
+  transition: border-color 0.3s ease-in-out;
+  margin-top: 20px;
+
+  // &::placeholder {
+  //   color: $placeholder-color;
+  // }
+
+  &:focus {
+    // transition: all 0.2s;
+    outline: none;
+    // border-color: $primary-color;
+    // box-shadow: 0 0 0 2px $primary-color;
+
+    // &::placeholder {
+    //   position: absolute;
+    //   bottom: 33px;
+    //   font-size: 12px;
+    //   transition: bottom 1s ease-in-out;
+    // }
   }
 }
