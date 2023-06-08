@@ -1,5 +1,6 @@
 
 
+import UserTwitts from '../../tweets/pages/UserTwitts';
 import './PrimaryColumn.scss'
 
 
@@ -7,7 +8,7 @@ const PrimaryColumn = () => {
     return (
         <>
 
-
+            <UserTwitts />
         </>
     )
 }

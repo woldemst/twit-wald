@@ -1,10 +1,10 @@
 import Input from "../../../shared/FormElements/Input";
 import Card from "../../../shared/UIElements/Card";
-
 import { USERS } from "../../pages/UserProfile";
 
+import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
+
 const EditProfile = () =>{
-    console.log(USERS);
     
     return(
         <>
@@ -16,6 +16,7 @@ const EditProfile = () =>{
                         name='editUserName'
                         label='Name'
                         placeholder='Name'
+                        validators={VALIDATOR_MINLENGTH(4)}
                         value=""
                     />
 

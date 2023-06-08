@@ -17,6 +17,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} exact />
               <Route path="/profile" element={<UserPage />} exact />
+              {/* <Route path="/:userId/twitts" /> */}
             </Routes>
           </div>
           <div className="column aside-right">

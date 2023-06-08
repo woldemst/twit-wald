@@ -5,9 +5,9 @@ import "./AsideRight.scss";
 const AsideRight = () => {
   return (
     <>
-      {/* <div className="column aside-right"> */}
+      <div className="aside-content">
       <LogingWindow />
-      {/* </div> */}
+      </div>
     </>
   );
 };

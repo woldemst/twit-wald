@@ -29,6 +29,11 @@
 
     .aside-right{
       max-width: 350px;
+
+      .aside-content{
+        position: sticky;
+        top: 10px;
+      }
     }
   }
 
