@@ -1,17 +1,17 @@
 import Button from "../../shared/FormElements/Button";
 import Avatar from "../../shared/UIElements/Avatar";
-import "./TwittItem.scss";
+import "./TweetItem.scss";
 
-const TwittItem = (props) => {
+const TweetItem = (props) => {
   return (
     <>
-      <div className="twitt-container">
+      <div className="tweet-container">
         <div className="creator-image">
           <Avatar image={props.creatorImage} className="tweet-creator" />
         </div>
-        <div className="twitt-content">
-          <div className="twitt-header">
-            <div className="twitt-creator">
+        <div className="tweet-content">
+          <div className="tweet-header">
+            <div className="tweet-creator">
               <div className="creator-info">
                 <span className="name">{props.creatorName}</span>
                 <span className="nickname">{props.creatorNickname}</span>
@@ -29,16 +29,16 @@ const TwittItem = (props) => {
               }
             />
           </div>
-          <div className="twitt-description__container">
+          <div className="tweet-description__container">
             {props.description}
           </div>
-          <div className="twitt-image__container">
-            <img src={props.imageUrl} alt="" className="twitt-image" />
+          <div className="tweet-image__container">
+            <img src={props.imageUrl} alt="" className="tweet-image" />
           </div>
-          <div className="twitt-actions__container">
+          <div className="tweet-actions__container">
             <div className="twit-actions__content">
               <div className="comments">*</div>
-              <div className="retwitt">*</div>
+              <div className="retweet">*</div>
               <div className="likes">*</div>
               <div className="share">*</div>
             </div>
@@ -49,4 +49,4 @@ const TwittItem = (props) => {
   );
 };
 
-export default TwittItem;
+export default TweetItem;

@@ -1,11 +1,11 @@
-import UserTwitts from '../../tweets/pages/UserTwitts'
+import Usertweets from '../../tweets/pages/UserTweets'
 import UserProfile from './UserProfile'
 
-const UserPage = props =>{
+const UserPage = props => {
     return (
         <>
-        <UserProfile />
-        <UserTwitts />
+            <UserProfile />
+            <Usertweets />
         </>
     )
 }

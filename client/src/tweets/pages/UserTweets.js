@@ -1,4 +1,4 @@
-import TwittList from "../components/TwittList";
+import TweetList from "../components/TweetList";
 import image from "../../images/avatar.jpeg";
 
 const DUMMY_TWITTS = [
@@ -59,9 +59,9 @@ const DUMMY_TWITTS = [
       "https://images.unsplash.com/photo-1661956601030-fdfb9c7e9e2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=742&q=80",
   },
 ];
-const UserTwitts = () => {
-  const loadedTwitts = DUMMY_TWITTS.filter((twitt) => twitt.creator);
-  return <TwittList items={loadedTwitts} />;
+const Usertweets = () => {
+  const loadedtweets = DUMMY_TWITTS.filter((tweet) => tweet.creator);
+  return <TweetList items={loadedtweets} />;
 };
 
-export default UserTwitts;
+export default Usertweets;

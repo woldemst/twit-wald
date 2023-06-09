@@ -11,40 +11,41 @@ const EditProfile = () =>{
             <Card className="edit-profile">
                 <form className="edit-form">
                     <Input 
+                        element='input'
                         type="text"
                         id='editUserName'
                         name='editUserName'
                         label='Name'
-                        placeholder='Name'
-                        validators={VALIDATOR_MINLENGTH(4)}
-                        value=""
+
+                        validators={[]}
+                        errorText="Please enter a valid user name"
                     />
 
                     <Input 
+                        element='input'
                         type="text"
                         id='editBio'
                         name='editBio'
                         label='Bio'
-                        placeholder="Bio"
-                        value=""
+                        errorText="Please enter a valid text"
                     />
 
                     <Input 
+                        element='input'
                         type="text"
                         id='editLocation'
                         name='editLocation'
                         label='Location'
-                        placeholder="Location"
-                        value=""
+                        errorText="Please enter a valid Location"
                     />
 
                     <Input 
+                        element='input'
                         type="text"
                         id='editWebsite'
                         name='editWebsite'
                         label='Website'
-                        placeholder="Website"
-                        value=""
+                        errorText="Please enter a valid Webseite"
                     />
 
                 </form>

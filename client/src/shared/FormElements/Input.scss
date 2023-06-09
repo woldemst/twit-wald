@@ -3,7 +3,7 @@ $primary-color: #1da1f2;
 $border-color: #444242;
 $placeholder-color: #657786;
 
-.input-container {
+.form-control {
   position: relative;
   border: 1px solid $border-color;
   border-radius: 4px;
@@ -30,34 +30,30 @@ $placeholder-color: #657786;
 
     transition: all 0.2s;
   }
-}
 
-input {
-  display: inline-block;
-  border: none;
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #000;
-  transition: border-color 0.3s ease-in-out;
-  margin-top: 20px;
+  input {
+    display: inline-block;
+    border: none;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    transition: border-color 0.3s ease-in-out;
+    margin-top: 20px;
 
-  // &::placeholder {
-  //   color: $placeholder-color;
-  // }
-
-  &:focus {
-    // transition: all 0.2s;
-    outline: none;
-    // border-color: $primary-color;
-    // box-shadow: 0 0 0 2px $primary-color;
-
-    // &::placeholder {
-    //   position: absolute;
-    //   bottom: 33px;
-    //   font-size: 12px;
-    //   transition: bottom 1s ease-in-out;
-    // }
+    &:focus {
+      outline: none;
+    }
   }
+
+
+  
 }
+.form-control--invalid{
+  border-color: red;
+}
+.error-text{
+  color: red;
+}
+

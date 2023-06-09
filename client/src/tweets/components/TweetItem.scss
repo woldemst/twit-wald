@@ -1,58 +1,53 @@
-
-
-.twitt-container{
+.tweet-container {
     display: flex;
     padding: 10px;
 
-    .twitt-header{
+    .tweet-header {
         display: flex;
         justify-content: space-between;
     }
 
-    .twitt-description__container{
+    .tweet-description__container {
         margin: 8px 0;
     }
 
-    .twit-actions__content{
+    .twit-actions__content {
         display: flex;
         justify-content: space-between;
     }
 
-    .creator-image{
+    .creator-image {
         margin-right: 5px;
     }
 
-    .twitt-content{
-       width: 100%;
+    .tweet-content {
+        width: 100%;
     }
 
-    .creator-info{
+    .creator-info {
         display: flex;
 
-        .name{
+        .name {
             margin: 0 5px 0 0;
             font-size: 16px;
             font-weight: 700;
         }
-        .nickname{
+        .nickname {
             margin: 0 5px 0 0;
             color: grey;
         }
 
-        .date{
+        .date {
             margin: 0 5px 0 0;
-
         }
     }
 
-    .twitt-image__container{
-        
-        img{
+    .tweet-image__container {
+        img {
             border-radius: 20px;
             // width: 100%;
             max-height: 510px;
             object-fit: contain;
-
         }
     }
 }

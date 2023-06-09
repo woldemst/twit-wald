@@ -50,8 +50,8 @@ const UserItem = (props) => {
 
             <div className="header__user-info">
               <h3>{props.name}</h3>
-              <p className="twitt-count">
-                {props.tweetCount} {props.tweetCount === 1 ? "twitt" : "tweets"}
+              <p className="tweet-count">
+                {props.tweetCount} {props.tweetCount === 1 ? "tweet" : "tweets"}
               </p>
             </div>
           </div>

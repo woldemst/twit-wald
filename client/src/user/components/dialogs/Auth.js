@@ -43,12 +43,12 @@ const Auth = (props) => {
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <Input
+            element='input'
             type="text"
             id="userName"
             name="userName"
             label="Name"
             validators={VALIDATOR_MINLENGTH(5)}
-            placeholder="Name"
             value={formData.userName}
             onChange={handleChange}
 
@@ -57,10 +57,12 @@ const Auth = (props) => {
           {useEmail && (
             <div className="use-phone_container">
               <Input
+                element='input'
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="Phone"
+                label="Phone"
+
               />
               <Button
                 className="input-change"
@@ -73,9 +75,10 @@ const Auth = (props) => {
           {!useEmail && (
             <div className="use-email_container">
               <Input
+                element='input'
                 type="email"
-                placeholder="Email address"
                 name="email"
+                label='Email address'
                 validators={[VALIDATOR_EMAIL()]}
                 id="email"
                 onChange={handleChange}
