@@ -1,10 +1,10 @@
 import "./Select.scss";
 
-const Select = () => {
+const Select = (props) => {
   return (
     <>
       <select name="month">
-        <option value="" disabled selected>
+        <option value={props.value} disabled selected>
           Select Month
         </option>
         <option value="01">January</option>

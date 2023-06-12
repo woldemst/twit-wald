@@ -1,6 +1,8 @@
 import { useReducer } from "react";
-import "./Input.scss";
+
 import { validate } from "../util/validators";
+
+import "./Input.scss";
 
 const inputReducer = (state, action) => {
   switch (action.type) {
@@ -65,7 +67,7 @@ const Input = (props) => {
   return (
     <>
       <div
-        className={`form-control ${
+        className={`form-control ${props.className} ${
           !inputState.isValid && inputState.isTouched && "form-control--invalid"
         }`}
       >

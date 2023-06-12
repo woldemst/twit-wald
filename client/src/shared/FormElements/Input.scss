@@ -45,11 +45,19 @@ $placeholder-color: #657786;
     &:focus {
       outline: none;
     }
-  }
 
+
+  }
+  &.new-tweet-input{
+    &:focus-within{
+      border: none;
+    }
+  }
 
   
 }
+
+
 .form-control--invalid{
   border-color: red;
 }

@@ -1,5 +1,4 @@
 import "./Button.scss";
-// import arrowLeft from '../../images/arrow-left.svg'
 
 const Button = (props) => {
   return (

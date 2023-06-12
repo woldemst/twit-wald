@@ -1,0 +1,65 @@
+
+
+.new-tweet-card{
+    display: flex;
+
+}
+
+
+
+.tweet-form__container{
+    width: 100%;
+
+    .tweet-form{
+        .new-tweet-input{
+            border: none;
+    
+            &:focus-within {
+                border: none;
+            }
+            &:focus{
+                border: none;
+            }
+    
+            input {
+                 margin: none;
+            }
+        }
+
+
+        .replay__container{
+            display: flex;
+            
+            .icon{
+                color: #fff;
+                margin-right: 10px;
+            }
+            .select-replier{
+                color: #1DA1F2;
+                font-weight: 600;
+            }
+        }
+
+    }
+}
+
+
+// jsx is in modal footer 
+.tweet-footer__container{
+    display: flex;
+    // position: absolute;
+    // bottom: 0;
+    width: 100%;
+    justify-content: space-between;
+
+    .tweet-options{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding: 0 20px;
+
+        .icon{
+            color: #fff;
+        }
+    }
+}
