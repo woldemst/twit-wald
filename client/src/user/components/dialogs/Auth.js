@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
+import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
 
 import Card from "../../../shared/UIElements/Card";
 import Input from '../../../shared/FormElements/Input'

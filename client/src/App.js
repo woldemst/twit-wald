@@ -6,6 +6,7 @@ import AsideRight from "./layout/columns/AsideRight";
 
 import "./App.scss";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import TweetItem from "./tweets/components/TweetItem";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} exact />
               <Route path="/profile" element={<UserPage />} exact />
-              {/* <Route path="/:userId/tweets" /> */}
+              <Route path="/profile/:tweetId" element={<TweetItem />}/>
             </Routes>
           </div>
           <div className="column aside-right">

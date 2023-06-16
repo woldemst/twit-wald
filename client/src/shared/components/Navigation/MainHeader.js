@@ -28,22 +28,7 @@ const Header = () => {
             onClick={() => setShowNewTweet(false)}
           />
         }
-        footerClass='tweet'
-        footer={
-          <div className="tweet-footer__container">
-            <div className="tweet-options">
-              <div className="image-icon icon">*</div>
-              <div className="gif-icon icon">*</div>
-              <div className="choice-icon icon">*</div>
-              <div className="emoji-icon icon">*</div>
-              <div className="sheduld-icon icon">*</div>
-              <div className="location-icon icon">*</div>
-            </div>
-            <div className="tweet-btn">
-              <Button content="Tweet" className="tweet" />
-            </div>
-          </div>
-        }
+        footerClass="tweet"
       >
         <NewTweet />
       </Modal>

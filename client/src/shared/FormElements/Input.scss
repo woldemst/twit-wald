@@ -48,14 +48,16 @@ $placeholder-color: #657786;
 
 
   }
+
+
   &.new-tweet-input{
-    &:focus-within{
-      border: none;
-    }
+    border: none;
   }
 
   
 }
+
+
 
 
 .form-control--invalid{
@@ -63,5 +65,6 @@ $placeholder-color: #657786;
 }
 .error-text{
   color: red;
+  margin: 0;
 }
 

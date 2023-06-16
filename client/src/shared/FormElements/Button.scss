@@ -129,3 +129,12 @@ $text-color: #ffffff;
     font-weight: 600;
   }
 }
+
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: #ccc;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
