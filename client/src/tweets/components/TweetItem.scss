@@ -11,15 +11,28 @@
         margin: 8px 0;
     }
 
-    .twit-actions__content {
-        display: flex;
-        justify-content: space-between;
+    .tweet-actions__container{
+        padding: 10px 0;
 
-        img{
-            width: 20px;
-            height: 30px;
+        .twit-actions__content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 425px;
+            .button{
+    
+                &-icon{
+                    padding: 10px;
+                }
+            }
+    
+            img{
+                width: 18px;
+            }
+    
+    
         }
     }
+
 
     .creator-image {
         margin-right: 5px;

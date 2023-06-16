@@ -7,6 +7,8 @@ import { useState } from "react";
 
 import commentsIcon from '../../images/chat.svg'
 import retweetIcon from '../../images/retweet.svg'
+import likeIcon from '../../images/like.svg'
+import uploadIcon from '../../images/upload.svg'
 
 
 const TweetItem = (props) => {
@@ -59,11 +61,12 @@ const TweetItem = (props) => {
           </div>
           <div className="tweet-actions__container">
             <div className="twit-actions__content">
-              
-              <div className="comments"><img src={commentsIcon} alt="" /></div>
-              <div className="retweet"><img src={retweetIcon} alt="" /></div>
-              <div className="likes">*</div>
-              <div className="share">*</div>
+              <Button className='icon comments' content={<img src={commentsIcon} alt="" />} />
+              <Button className='icon retweet' content={<img src={retweetIcon} alt="" />} />
+              <Button  className='icon likes' content={<img src={likeIcon} alt="" />} />
+              <Button className='icon share' content={<img src={uploadIcon} alt="" />} />
+
+
             </div>
           </div>
         </div>
