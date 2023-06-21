@@ -1,0 +1,116 @@
+
+.tweet-page__header {
+  display: flex;
+  padding: 5px 0;
+  align-items: center;
+
+  .btn-headline{
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+.tweet-page__container {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #666;
+    flex-direction: column;
+  
+      .tweet-link{
+          width: 100%;
+      }
+    .tweet-header {
+      display: flex;
+      justify-content: space-between;
+
+      .tweet__main-info {
+        display: flex;
+
+        .tweet-creator{
+          display: flex;
+          align-items: center;
+          .creator-info{
+            flex-direction: column;
+          }
+        }
+
+      }
+      .tweet__actions{
+        display: flex;
+        align-items: center;
+
+        .button-subscribe{
+          color: #000;
+          font-weight: 600;
+          margin: 0 10px;
+        }
+      }
+    }
+  
+    .tweet-description__container {
+      margin: 12px 0;
+    }
+  
+    .tweet-actions__container {
+      padding: 10px 0;
+  
+      .twit-actions__content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 425px;
+        .button {
+          &-icon {
+            padding: 10px;
+            background: none;
+          }
+  
+          &:hover {
+            background-color: darken(#d9d9d9, 70%);
+          //   color: #1da1f2;
+  
+          }
+  
+  
+        }
+  
+        img {
+          width: 18px;
+        }
+      }
+    }
+  
+    .creator-image {
+      margin-right: 5px;
+    }
+  
+    .tweet-page__content {
+      width: 100%;
+    }
+  
+    .creator-info {
+      display: flex;
+  
+      .name {
+        margin: 0 5px 0 0;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .nickname {
+        margin: 0 5px 0 0;
+        color: grey;
+      }
+  
+      .date {
+        margin: 0 5px 0 0;
+      }
+    }
+  
+    .tweet-image__container {
+      img {
+        border-radius: 20px;
+        width: 100%;
+        // max-height: 510px;
+        object-fit: contain;
+      }
+    }
+  }
+  

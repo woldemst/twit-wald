@@ -6,7 +6,7 @@ const AsideRight = () => {
   return (
     <>
       <div className="aside-content">
-      <LogingWindow />
+        <LogingWindow />
       </div>
     </>
   );

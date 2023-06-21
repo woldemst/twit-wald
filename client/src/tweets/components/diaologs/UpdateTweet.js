@@ -8,7 +8,7 @@ const UpdateTweet = () => {
     {
       id: "t1",
       creator: {
-        id: "u1",
+        id: "profile",
         image: image,
         name: "Waldemar Weinert",
         nickname: "@woldemst",
@@ -38,13 +38,13 @@ const UpdateTweet = () => {
   const tweetId = useParams().tweetId;
   const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === tweetId);
 
-  if (!identifiedTweet) {
-    return (
-      <>
-        <h2>Could not find tweet</h2>
-      </>
-    );
-  }
+  // if (!identifiedTweet) {
+  //   return (
+  //     <>
+  //       <h2>Could not find tweet</h2>
+  //     </>
+  //   );
+  // }
   return (
     <>
       <form>
@@ -54,7 +54,7 @@ const UpdateTweet = () => {
           type="text"
           label="Title"
           validators={[VALIDATOR_REQUIRE()]}
-          // onInput{()=>{}}
+          onInput={()=>{}}
           value={identifiedTweet.description}
           valid="true"
         />

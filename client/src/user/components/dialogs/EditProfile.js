@@ -1,6 +1,5 @@
 import Input from "../../../shared/FormElements/Input";
 import Card from "../../../shared/UIElements/Card";
-import { USERS } from "../../pages/UserProfile";
 
 import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
 import { useCallback } from "react";

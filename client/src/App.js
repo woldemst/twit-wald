@@ -5,8 +5,12 @@ import UserPage from "./user/pages/UserPage";
 import AsideRight from "./layout/columns/AsideRight";
 
 import "./App.scss";
+
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import TweetItem from "./tweets/components/TweetItem";
+import Usertweets from "./tweets/pages/UserTweets";
+import TweetPage from "./tweets/pages/TweetPage";
+import CertainTweet from "./tweets/pages/CertainTweet";
 
 function App() {
   return (
@@ -18,7 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} exact />
               <Route path="/profile" element={<UserPage />} exact />
-              <Route path="/profile/:tweetId" element={<TweetItem />}/>
+              <Route path="/profile/status/:tweetId" element={<CertainTweet /> } />
             </Routes>
           </div>
           <div className="column aside-right">

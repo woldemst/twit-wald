@@ -1,22 +1,11 @@
-import TweetItem from "./TweetItem";
-import Card from "../../shared/UIElements/Card";
+import TweetPage from "../pages/TweetPage"
 
-const tweetList = (props) => {
-    if (props.items.length === 0) {
-        return (
-          <div className="place-list center">
-            <Card>
-              <h2>No places found. Maybe create one?</h2>
-            </Card>
-          </div>
-        );
-      }
-
+const TweetPageList = (props) => {
     return (
-
-        <div className="tweets">
+        <>
             {props.items.map(tweet => (
-                <TweetItem
+                
+                <TweetPage
                     key={tweet.id}
                     id={tweet.id}
                     creatorId={tweet.creatorId}
@@ -27,12 +16,10 @@ const tweetList = (props) => {
                     description={tweet.description}
                     imageUrl={tweet.imageUrl}
 
-
-
                 />
             ))}
-        </div>
+        </>
     )
 }
 
-export default tweetList;
+export default TweetPageList;

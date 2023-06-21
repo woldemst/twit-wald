@@ -37,7 +37,7 @@ const NewTweet = () => {
   const avatar = USERS.map((user) => user.image);
 
   const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {  
+    inputs: {
       tweetDescription: {
         value: "",
         isValid: false,
@@ -57,7 +57,7 @@ const NewTweet = () => {
 
   const tweetSubmitHandler = (e) => {
     e.preventDefault()
-    console.log(formState.inputs);
+    // console.log(formState.inputs);
   }
 
   return (

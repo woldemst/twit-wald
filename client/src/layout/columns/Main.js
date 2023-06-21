@@ -9,7 +9,6 @@ export default function Main() {
         <PrimaryColumn />
       </div>
 
-
     </>
   );
 }

@@ -36,12 +36,23 @@
 }
 
 .dropdown-option {
+  margin: 0;
+  button{
+    background: none;
+    width: 100%;
+    font-size: 18px;
+    
+    &:hover {
+      color: #1da1f2;
+    }
+  }
+}
+
+.button-dropdown{
   padding: 8px 12px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   margin: 0;
 
-  &:hover {
-    color: #1da1f2;
-  }
+  // background: none;
 }

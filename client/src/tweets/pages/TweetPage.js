@@ -1,21 +1,18 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-import Button from "../../shared/FormElements/Button";
 import Avatar from "../../shared/UIElements/Avatar";
 import Dropdown from "../../shared/FormElements/Dropdown";
+import Button from "../../shared/FormElements/Button";
 
 import commentsIcon from "../../images/chat.svg";
 import retweetIcon from "../../images/retweet.svg";
 import likeIcon from "../../images/like.svg";
 import uploadIcon from "../../images/upload.svg";
 
-import "./TweetItem.scss";
-// import Card from "../../shared/UIElements/Card";
+import "./TweetPage.scss";
 
-
-const TweetItem = (props) => {
+const TweetPage = (props) => {
   const options = [
     { value: "option1", label: "Delete" },
     { value: "option2", label: "Edit" },
@@ -28,54 +25,56 @@ const TweetItem = (props) => {
     setSelectedOption(option);
   };
 
-  const tweetId = useParams().tweetId;
-  
-  // const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === tweetId);
+  const navigate = useNavigate();
 
-
-  // if (!identifiedTweet){
-  //   return(
-  //     <div className="center">
-  //       <Card>
-  //         <h2>Could not find </h2>
-  //       </Card>
-  //     </div>
-  //   )
-  // }
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return (
     <>
-      <div className="tweet-container">
-        <div className="creator-image">
-          <Link to={`/${props.creatorId}`}>
-            <Avatar image={props.creatorImage} className="tweet-creator" />
-          </Link>
+      <div className="tweet-page__header">
+        <div className="back-btn__container">
+          <Button content="<" className="back" onClick={handleGoBack} />
         </div>
-        <div className="tweet-content">
+        <div className="btn-headline">Tweet</div>
+      </div>
+
+      <div className="tweet-page__container">
+        <div className="user-info__container">
+
           <div className="tweet-header">
-            <div className="tweet-creator">
-              <div className="creator-info">
+            <div className="tweet__main-info">
+              <div className="creator-image">
                 <Link to={`/${props.creatorId}`}>
-                  <span className="name">{props.creatorName}</span>
+                  <Avatar image={props.creatorImage} className="tweet-creator" />
                 </Link>
-                <span className="nickname">{props.creatorNickname}</span>
-                <span className="date">*{props.posted}</span>
+              </div>
+
+              <div className="tweet-creator">
+                <div className="creator-info">
+                  <Link to={`/${props.creatorId}`}>
+                    <span className="name">{props.creatorName}</span>
+                  </Link>
+                  <span className="nickname">{props.creatorNickname}</span>
+                </div>
               </div>
             </div>
+            <div className="tweet__actions">
+
+              <Button content="Subscribe" className='subscribe' />
               <Dropdown options={options} onSelect={handleOptionSelect} />
+            </div>
+
           </div>
-          <Link
-            // to={`/${props.creatorId}/status/${props.id}`}
-            to={`/${props.creatorId}/status/${props.id}`}
-            className={`tweet-link tweet-${props.id}`}
-          >
-            <div className="tweet-description__container">
-              {props.description}
-            </div>
-            <div className="tweet-image__container">
-              <img src={props.imageUrl} alt="" className="tweet-image" />
-            </div>
-          </Link>
+        </div>
+        <div className="tweet-page__content">
+          <div className="tweet-description__container">
+            {props.description}
+          </div>
+          <div className="tweet-image__container">
+            <img src={props.imageUrl} alt="" className="tweet-image" />
+          </div>
 
           <div className="tweet-actions__container">
             <div className="twit-actions__content">
@@ -103,4 +102,4 @@ const TweetItem = (props) => {
   );
 };
 
-export default TweetItem;
+export default TweetPage;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Dropdown.scss";
+import Button from "./Button";
 
 const Dropdown = ({ options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,28 +17,26 @@ const Dropdown = ({ options, onSelect }) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className={`dropdown dropdown-`}>
       <div className="dropdown-header" onClick={toggleDropdown}>
-        {selectedOption ? (
-          selectedOption.label
-        ) : (
+        {
           <>
             <span></span>
             <span></span>
             <span></span>
           </>
-        )}
+        }
       </div>
       {isOpen && (
         <ul className="dropdown-options">
           {options.map((option) => (
-
             <li
               key={option.value}
               onClick={() => handleOptionSelect(option)}
               className="dropdown-option"
             >
-              {option.label}
+              <Button content={option.label} className='dropdown' />
+              
             </li>
           ))}
         </ul>
