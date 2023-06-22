@@ -4,7 +4,9 @@ import { VALIDATOR_REQUIRE } from "../../../shared/util/validators";
 import Button from "../../../shared/FormElements/Button";
 import image from '../../../images/avatar.jpeg'
 
-const UpdateTweet = () => {
+import './UpdateTweet.scss'
+
+const UpdateTweet = (props) => {
   const DUMMY_TWITTS = [
     {
       id: "t1",
@@ -36,8 +38,8 @@ const UpdateTweet = () => {
     },
   ];
 
-  const tweetId = useParams().tweetId;
-  const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === tweetId);
+
+  const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === props.tweetId);
 
   if (!identifiedTweet) {
     return (
@@ -49,7 +51,7 @@ const UpdateTweet = () => {
   
   return (
     <>
-      <form>
+      <form className="update-tweet__form">
         <Input
           id="tweetDescription"
           element="input"

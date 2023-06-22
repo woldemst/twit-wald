@@ -1,25 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../shared/FormElements/Button";
 
 import Avatar from "../../shared/UIElements/Avatar";
 import Dropdown from "../../shared/FormElements/Dropdown";
 import UpdateTweet from "./diaologs/UpdateTweet";
+import Button from "../../shared/FormElements/Button";
+import Modal from "../../shared/UIElements/Modal";
 
 import commentsIcon from "../../images/chat.svg";
 import retweetIcon from "../../images/retweet.svg";
 import likeIcon from "../../images/like.svg";
 import uploadIcon from "../../images/upload.svg";
-import Modal from "../../shared/UIElements/Modal"
-
 
 import "./TweetItem.scss";
-// import Card from "../../shared/UIElements/Card";
-
 
 const TweetItem = (props) => {
-  const [showEditForm, setShowEditForm] = useState(false)
+  const [showEditForm, setShowEditForm] = useState(false);
 
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const options = [
     { value: "option1", label: "Delete", onClick: () => {console.log('Delete function');} },
@@ -27,40 +25,33 @@ const TweetItem = (props) => {
     { value: "option3", label: "Pin to your profile", onClick: () => {console.log('Pin to profile');}},
   ];
 
-  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
 
-  // const showEditFormHandler = () => {
-
-  // }
-
-  
   return (
     <>
-
-    <Modal
+      <Modal
         show={showEditForm}
         contentClass="edit-item__modal-content"
         header={
           <div className="btn-container">
-          <div className="close-btn">
-            <Button
-              content="✕"
-              className="close"
-              onClick={() => setShowEditForm(false)}
-            />
+            <div className="close-btn">
+              <Button
+                content="✕"
+                className="close"
+                onClick={() => setShowEditForm(false)}
+              />
+            </div>
+            <div className="save-btn">
+              <Button content="Save" className="save-edits" />
+            </div>
           </div>
-          <div className="save-btn">
-            <Button content="Save" className="save-edits" />
-          </div>
-        </div>
         }
-    >
-      <UpdateTweet />
-    </Modal>
+      >
+        <UpdateTweet tweetId={props.id} />
+      </Modal>
 
       <div className="tweet-container">
         <div className="creator-image">
@@ -79,7 +70,7 @@ const TweetItem = (props) => {
                 <span className="date">*{props.posted}</span>
               </div>
             </div>
-              <Dropdown options={options} onSelect={handleOptionSelect} />
+            <Dropdown options={options} onSelect={handleOptionSelect} />
           </div>
           <Link
             // to={`/${props.creatorId}/status/${props.id}`}
