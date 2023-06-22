@@ -1,16 +1,12 @@
 .modal {
   // width: 600px;
   // height: 50%;
+  z-index: 100;
   position: fixed;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  top: 12vh;
   left: 0;
   right: 0;
-  background: rgb(56 117 128 / 26%);
-}
-
-.modal-container {
+  margin: auto;
   border-radius: 20px;
   background: #000;
   height: max-content;
@@ -18,13 +14,14 @@
   max-height: 650px;
   width: 600px;
   overflow-y: scroll;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  left: 0;
-  right: 0;
-  z-index: 20;
+  position: fixed;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+}
+
+.modal-container {
+
+
 
   .modal_footer {
     position: absolute;

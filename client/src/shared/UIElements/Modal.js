@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
 import "./Modal.scss";
-// import Backdrop from "./Backdrop";
+import Backdrop from "./Backdrop";
 
 const ModalOverlay = (props) => {
   const content = (
@@ -24,7 +24,7 @@ const ModalOverlay = (props) => {
 const Modal = (props) => {
   return (
     <>
-    {/* {props.show && <Backdrop onClick={props.onClose} />} */}
+    {props.show && <Backdrop onClick={props.onClose} />}
     <CSSTransition
       in={props.show}
       // mountOnEnter
