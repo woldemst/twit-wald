@@ -18,15 +18,15 @@ const Dropdown = ({ options, onSelect }) => {
 
   return (
     <div className={`dropdown dropdown-`}>
+      {/* // to toggle a dropdown */}
       <div className="dropdown-header" onClick={toggleDropdown}>
-        {
-          <>
-            <span></span>
-            <span></span>
-            <span></span>
-          </>
-        }
+        <>
+          <span></span>
+          <span></span>
+          <span></span>
+        </>
       </div>
+
       {isOpen && (
         <ul className="dropdown-options">
           {options.map((option) => (
@@ -35,8 +35,11 @@ const Dropdown = ({ options, onSelect }) => {
               onClick={() => handleOptionSelect(option)}
               className="dropdown-option"
             >
-              <Button content={option.label} className='dropdown' />
-              
+              <Button
+                content={option.label}
+                className="dropdown"
+                onClick={option.onClick}
+              />
             </li>
           ))}
         </ul>

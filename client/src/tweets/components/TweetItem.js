@@ -1,25 +1,30 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-
 import { Link } from "react-router-dom";
 import Button from "../../shared/FormElements/Button";
+
 import Avatar from "../../shared/UIElements/Avatar";
 import Dropdown from "../../shared/FormElements/Dropdown";
+import UpdateTweet from "./diaologs/UpdateTweet";
 
 import commentsIcon from "../../images/chat.svg";
 import retweetIcon from "../../images/retweet.svg";
 import likeIcon from "../../images/like.svg";
 import uploadIcon from "../../images/upload.svg";
+import Modal from "../../shared/UIElements/Modal"
+
 
 import "./TweetItem.scss";
 // import Card from "../../shared/UIElements/Card";
 
 
 const TweetItem = (props) => {
+  const [showEditForm, setShowEditForm] = useState(false)
+
+
   const options = [
-    { value: "option1", label: "Delete" },
-    { value: "option2", label: "Edit" },
-    { value: "option3", label: "Pin to your profile" },
+    { value: "option1", label: "Delete", onClick: () => {console.log('Delete function');} },
+    { value: "option2", label: "Edit", onClick: () => setShowEditForm(true) },
+    { value: "option3", label: "Pin to your profile", onClick: () => {console.log('Pin to profile');}},
   ];
 
   const [selectedOption, setSelectedOption] = useState(null);
@@ -28,23 +33,35 @@ const TweetItem = (props) => {
     setSelectedOption(option);
   };
 
-  const tweetId = useParams().tweetId;
-  
-  // const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === tweetId);
+  // const showEditFormHandler = () => {
 
-
-  // if (!identifiedTweet){
-  //   return(
-  //     <div className="center">
-  //       <Card>
-  //         <h2>Could not find </h2>
-  //       </Card>
-  //     </div>
-  //   )
   // }
 
+  
   return (
     <>
+
+    <Modal
+        show={showEditForm}
+        contentClass="edit-item__modal-content"
+        header={
+          <div className="btn-container">
+          <div className="close-btn">
+            <Button
+              content="✕"
+              className="close"
+              onClick={() => setShowEditForm(false)}
+            />
+          </div>
+          <div className="save-btn">
+            <Button content="Save" className="save-edits" />
+          </div>
+        </div>
+        }
+    >
+      <UpdateTweet />
+    </Modal>
+
       <div className="tweet-container">
         <div className="creator-image">
           <Link to={`/${props.creatorId}`}>

@@ -6,7 +6,7 @@ import TweetPageList from "../components/TweetPageList";
 const DUMMY_TWITTS = [
   {
     id: "t1",
-    creatorId: 'profile',
+    creatorId: "profile",
     creator: {
       image: image,
       name: "Waldemar Weinert",
@@ -20,7 +20,7 @@ const DUMMY_TWITTS = [
   },
   {
     id: "t2",
-    creatorId: 'profile',
+    creatorId: "profile",
     creator: {
       image:
         "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -34,7 +34,7 @@ const DUMMY_TWITTS = [
   },
   {
     id: "t3",
-    creatorId: 'u3',
+    creatorId: "u3",
     creator: {
       image:
         "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -48,7 +48,7 @@ const DUMMY_TWITTS = [
   },
   {
     id: "t4",
-    creatorId: 'u4',
+    creatorId: "u4",
     creator: {
       image:
         "https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -63,17 +63,9 @@ const DUMMY_TWITTS = [
 ];
 
 const CertainTweet = () => {
-  const {tweetId} = useParams()
-    console.log(tweetId);
-  const loadedtweets = DUMMY_TWITTS.filter((tweet) => tweet.id === tweetId) ;
-    console.log("certain tweet");
-
-    console.log(loadedtweets);
-  return (
-    <>
-      <TweetPageList items={loadedtweets} />
-    </>
-  )
+  const { tweetId } = useParams();
+  const loadedtweets = DUMMY_TWITTS.filter((tweet) => tweet.id === tweetId);
+  return <TweetPageList items={loadedtweets} />;
 };
 
 export default CertainTweet;

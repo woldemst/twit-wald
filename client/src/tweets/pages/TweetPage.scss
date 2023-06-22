@@ -1,7 +1,11 @@
 
 .tweet-page__header {
+  top: 0;
   display: flex;
   padding: 5px 0;
+  position: sticky;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
   align-items: center;
 
   .btn-headline{
@@ -51,12 +55,15 @@
     }
   
     .tweet-actions__container {
-      padding: 10px 0;
+      padding: 4px 0;
+      border-bottom: 1px solid #666;
   
       .twit-actions__content {
         display: flex;
         justify-content: space-between;
-        max-width: 425px;
+        // max-width: 425px;
+        padding:  0 20px ;
+
         .button {
           &-icon {
             padding: 10px;
@@ -73,7 +80,7 @@
         }
   
         img {
-          width: 18px;
+          width: 24px;
         }
       }
     }
@@ -84,6 +91,22 @@
   
     .tweet-page__content {
       width: 100%;
+
+      .tweet-details__container{
+        display: flex;
+        flex-direction: column;
+
+        .row {
+          display: flex;
+          padding: 14px 0;
+          border-bottom: 1px solid #666;
+          .item{
+            display: flex;
+            margin:  0 20px 0 0;
+            
+          }
+        }
+      }
     }
   
     .creator-info {
@@ -108,8 +131,8 @@
       img {
         border-radius: 20px;
         width: 100%;
-        // max-height: 510px;
-        object-fit: contain;
+        max-height: 680px;
+        object-fit: cover;
       }
     }
   }

@@ -42,12 +42,14 @@ const TweetPage = (props) => {
 
       <div className="tweet-page__container">
         <div className="user-info__container">
-
           <div className="tweet-header">
             <div className="tweet__main-info">
               <div className="creator-image">
                 <Link to={`/${props.creatorId}`}>
-                  <Avatar image={props.creatorImage} className="tweet-creator" />
+                  <Avatar
+                    image={props.creatorImage}
+                    className="tweet-creator"
+                  />
                 </Link>
               </div>
 
@@ -61,13 +63,12 @@ const TweetPage = (props) => {
               </div>
             </div>
             <div className="tweet__actions">
-
-              <Button content="Subscribe" className='subscribe' />
+              <Button content="Subscribe" className="subscribe" />
               <Dropdown options={options} onSelect={handleOptionSelect} />
             </div>
-
           </div>
         </div>
+
         <div className="tweet-page__content">
           <div className="tweet-description__container">
             {props.description}
@@ -76,7 +77,24 @@ const TweetPage = (props) => {
             <img src={props.imageUrl} alt="" className="tweet-image" />
           </div>
 
+          <div className="tweet-details__container">
+            <div className="row first-row">
+              <div className="item time">{props.time}6:43 PM</div>
+              <div className="item date">{props.date} · Jun 21, 2023</div>
+              <div className="item views">{props.views}3,068 Views</div>
+            </div>
+
+            <div className="row second-row">
+              <div className="item retweets">{props.retweets}31 Retweets</div>
+              <div className="item quotes">{props.quotes}19 Quotes</div>
+              <div className="item likes">{props.likes}895 Likes</div>
+              <div className="item bookmarks">
+                {props.bookmarks}895 Bookmarks
+              </div>
+            </div>
+          </div>
           <div className="tweet-actions__container">
+
             <div className="twit-actions__content">
               <Button
                 className="icon comments"

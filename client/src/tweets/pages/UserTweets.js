@@ -68,7 +68,7 @@ const Usertweets = () => {
   const loadedtweets = DUMMY_TWITTS.filter(
     (tweet) => tweet.creatorId === "profile"
   );
-  // console.log(loadedtweets);
+
   return (
     <>
       <TweetList items={loadedtweets} />;

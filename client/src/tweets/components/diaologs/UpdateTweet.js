@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Input from "../../../shared/FormElements/Input";
 import { VALIDATOR_REQUIRE } from "../../../shared/util/validators";
 import Button from "../../../shared/FormElements/Button";
+import image from '../../../images/avatar.jpeg'
 
 const UpdateTweet = () => {
   const DUMMY_TWITTS = [
@@ -38,13 +39,14 @@ const UpdateTweet = () => {
   const tweetId = useParams().tweetId;
   const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === tweetId);
 
-  // if (!identifiedTweet) {
-  //   return (
-  //     <>
-  //       <h2>Could not find tweet</h2>
-  //     </>
-  //   );
-  // }
+  if (!identifiedTweet) {
+    return (
+      <>
+        <h2>Could not find tweet</h2>
+      </>
+    );
+  }
+  
   return (
     <>
       <form>
