@@ -1,64 +1,29 @@
-import { useCallback, useReducer } from "react";
-
 import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
 import Input from "../../../shared/FormElements/Input";
 import Avatar from "../../../shared/UIElements/Avatar";
 import Card from "../../../shared/UIElements/Card";
 import { USERS } from "../../../user/pages/UserProfile";
 import Button from "../../../shared/FormElements/Button";
-
+import { useForm } from "../../../shared/hooks/form-hook";
 import "./NewTweet.scss";
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "INPUT_CHANGE":
-      let formIsValid = true;
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
-        }
-      }
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid },
-        },
-        isValid: formIsValid,
-      };
-    default:
-      return state;
-  }
-};
 
 const NewTweet = () => {
   const avatar = USERS.map((user) => user.image);
 
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
-      tweetDescription: {
+    const [formState, inputHandler] = useForm(
+    {
+      newTweetContent: {
         value: "",
         isValid: false,
       },
     },
-    isValid: false,
-  });
-
-  const inputHandler = useCallback((id, value, isValid) => {
-    dispatch({
-      type: "INPUT_CHANGE",
-      value: value,
-      isValid: isValid,
-      inputId: id,
-    });
-  }, []);
+    false
+  );
 
   const tweetSubmitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // console.log(formState.inputs);
-  }
+  };
 
   return (
     <>
@@ -76,13 +41,15 @@ const NewTweet = () => {
               </select> */}
 
               <Input
-                id="tweetDescription"
+                id="newTweetContent"
                 element="input"
                 type="text"
                 placeholder="What's heppening?!"
                 className="new-tweet-input"
                 validators={[VALIDATOR_MINLENGTH(4)]}
                 onInput={inputHandler}
+                value={formState.inputs.newTweetContent.value}
+                valid={formState.inputs.newTweetContent.isValid}
               />
 
               <div className="replay__container">
@@ -106,10 +73,8 @@ const NewTweet = () => {
                   />
                 </div>
               </div>
-
             </form>
           </div>
-
         </div>
       </Card>
     </>
