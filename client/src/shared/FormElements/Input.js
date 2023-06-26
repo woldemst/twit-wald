@@ -6,28 +6,28 @@ import "./Input.scss";
 
 const inputReducer = (state, action) => {
   switch (action.type) {
-    case "CHANGE":
+    case 'CHANGE':
       return {
         ...state,
         value: action.val,
-        isValid: validate(action.val, action.validators),
+        isValid: validate(action.val, action.validators)
       };
-    case "TOUCH":
+    case 'TOUCH': {
       return {
-        ...state, 
+        ...state,
         isTouched: true
       }
+    }
     default:
       return state;
   }
 };
 
 const Input = (props) => {
-
   const [inputState, dispatch] = useReducer(inputReducer, {
-    value: props.value || "",
+    value: props.initialValue || '',
     isTouched: false,
-    isValid: props.valid || false,
+    isValid: props.initialValid || false
   });
 
   const {id, onInput} = props;
@@ -35,13 +35,13 @@ const Input = (props) => {
 
   useEffect(()=>{
     onInput(id, value, isValid)
-  }, [id, value, isValid, onInput])
+  }, [id, value, isValid, onInput, props.initialValue])
 
-  const changeHandler = (event) => {
+  const changeHandler = event => {
     dispatch({
-      type: "CHANGE",
+      type: 'CHANGE',
       val: event.target.value,
-      validators: props.validators,
+      validators: props.validators
     });
   };
 

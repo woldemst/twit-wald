@@ -38,7 +38,7 @@ const UserItem = (props) => {
           </div>
         }
       >
-        <EditProfile />
+        <EditProfile userId={props.id} />
       </Modal>
 
       <div className="user-profile">
