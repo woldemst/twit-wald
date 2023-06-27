@@ -6,6 +6,12 @@ const VALIDATOR_TYPE_MAX = 'MAX';
 const VALIDATOR_TYPE_EMAIL = 'EMAIL';
 const VALIDATOR_TYPE_FILE = 'FILE';
 
+//link
+const VALIDATOR_TYPE_LINK = 'LINK';
+
+export const VALIDATOR_LINK = () => ({ type: VALIDATOR_TYPE_LINK });
+
+
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
 export const VALIDATOR_FILE = () => ({ type: VALIDATOR_TYPE_FILE });
 export const VALIDATOR_MINLENGTH = val => ({
@@ -40,6 +46,11 @@ export const validate = (value, validators) => {
     }
     if (validator.type === VALIDATOR_TYPE_EMAIL) {
       isValid = isValid && /^\S+@\S+\.\S+$/.test(value);
+    }
+    if (validator.type === VALIDATOR_TYPE_LINK) {
+      isValid =
+        isValid &&
+        /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(value);
     }
   }
   return isValid;
