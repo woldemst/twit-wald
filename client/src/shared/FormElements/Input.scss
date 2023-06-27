@@ -5,7 +5,6 @@ $placeholder-color: #657786;
 
 .form-control {
   position: relative;
-  border: 1px solid $border-color;
   border-radius: 4px;
 
   label {
@@ -18,9 +17,7 @@ $placeholder-color: #657786;
 
   &:focus-within {
     transition: all 0.2s;
-
-    border-color: $primary-color;
-    box-shadow: 0 0 0 2px $primary-color;
+    // box-shadow: 0 0 0 2px $primary-color;
   }
 
   &:focus-within label {
@@ -39,32 +36,47 @@ $placeholder-color: #657786;
     font-size: 16px;
     color: #fff;
     background-color: #000;
-    transition: border-color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     margin-top: 20px;
 
     &:focus {
       outline: none;
+      border: none;
+      box-shadow: none;
     }
 
-
+    &:not(:empty) {
+      ~ label {
+        top: 30%;
+      }
+    }
   }
 
+  // for dialog window
+  &-border {
+    border: 1px solid $border-color;
 
-  &.new-tweet-input{
-    border: none;
+    &:focus-within {
+      transition: all 0.2s;
+      box-shadow: 0 0 0 2px $primary-color;
+    }
   }
+}
+
+.form-control--invalid {
+  border-color: red;
 
   
+  &:focus-within {
+    transition: all 0.2s;
+    box-shadow: none;
+    
+    label{
+      color: red;
+    }
+  }
 }
-
-
-
-
-.form-control--invalid{
-  border-color: red;
-}
-.error-text{
+.error-text {
   color: red;
   margin: 0;
 }
-

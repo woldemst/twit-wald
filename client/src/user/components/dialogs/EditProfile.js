@@ -1,7 +1,7 @@
 import Input from "../../../shared/FormElements/Input";
 import Card from "../../../shared/UIElements/Card";
 import { useForm } from "../../../shared/hooks/form-hook";
-import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
+import { VALIDATOR_LINK, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../../shared/util/validators";
 
 const DUMMY_USERS = [
   {
@@ -9,7 +9,7 @@ const DUMMY_USERS = [
     name: "Max Schwarz",
     image:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
-    bio: "That's my official page",
+    textBio: "That's my official page",
     location: "Germany",
     link: "https://github.com/woldemst",
     tweets: 3,
@@ -18,7 +18,7 @@ const DUMMY_USERS = [
     id: "u2",
     name: "John Doe",
     image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
-    bio: "That's my official page",
+    textBio: "That's my official page",
     location: "Germany",
     link: "https://github.com/johndoe",
     tweets: 6,
@@ -27,7 +27,7 @@ const DUMMY_USERS = [
     id: "u3",
     name: "Jane Smith",
     image: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800",
-    bio: "That's my official page",
+    textBio: "That's my official page",
     location: "Germany",
     link: "https://github.com/jane",
     tweets: 3,
@@ -42,12 +42,12 @@ const EditProfile = (props) => {
         value: identifiedUser.name,
         isValid: true,
       },
-      bio: {
-        value: identifiedUser.bio,
+      textBio: {
+        value: identifiedUser.textBio,
         isValid: true,
       },
       location: {
-        value: identifiedUser.country,
+        value: identifiedUser.location,
         isValid: true,
       },
       link: {
@@ -66,8 +66,9 @@ const EditProfile = (props) => {
           <Input
             id="name"
             element="input"
+            className='border'
             type="text"
-            name="editUserName"
+            name="name"
             label="Name"
             onInput={inputHandler}
             validators={[VALIDATOR_MINLENGTH(4)]}
@@ -77,39 +78,46 @@ const EditProfile = (props) => {
           />
 
           <Input
+            id="textBio"
             element="input"
+            className='border'
             type="text"
-            id="editBio"
-            name="editBio"
+            name="textBio"
             label="Bio"
             onInput={inputHandler}
             errorText="Please enter a valid text"
-            intialValue={formState.inputs.bio.value}
-            initialValid={formState.inputs.bio.isValid}
+            validators={[VALIDATOR_REQUIRE()]}
+            initialValue={formState.inputs.textBio.value}
+            initialValid={formState.inputs.textBio.isValid}
 
           />
 
           <Input
+            id="location"
             element="input"
+            className='border'
             type="text"
-            id="editLocation"
-            name="editLocation"
+            name="location"
             label="Location"
             onInput={inputHandler}
             errorText="Please enter a valid Location"
+            validators={[VALIDATOR_REQUIRE()]}
             initialValue={formState.inputs.location.value}
             initialValid={formState.inputs.location.isValid}
 
           />
 
+
           <Input
+            id="link"
+            className='border'
             element="input"
             type="text"
-            id="editWebsite"
-            name="editWebsite"
-            label="Website"
+            name="link"
+            label="Link"
             onInput={inputHandler}
-            errorText="Please enter a valid Webseite"
+            errorText="Please enter a valid Link"
+            validators={[VALIDATOR_LINK()]}
             initialValue={formState.inputs.link.value}
             initialValid={formState.inputs.link.isValid}
 

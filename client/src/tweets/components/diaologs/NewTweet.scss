@@ -1,29 +1,9 @@
 
 
-// .new-tweet-card-container{
-//     display: flex;
-// }
-
-
-
 .tweet-form__container{
     width: 100%;
 
     .tweet-form{
-        .new-tweet-input{
-            border: none;
-    
-            &:focus-within {
-                border: none;
-            }
-            &:focus{
-                border: none;
-            }
-    
-            input {
-                 margin: none;
-            }
-        }
 
 
         .replay__container{

@@ -5,6 +5,7 @@ import Button from "../../../shared/FormElements/Button";
 import image from "../../../images/avatar.jpeg";
 
 import "./UpdateTweet.scss";
+import { useEffect, useState } from "react";
 
 const DUMMY_TWITTS = [
   {
@@ -38,17 +39,31 @@ const DUMMY_TWITTS = [
 ];
 
 const UpdateTweet = (props) => {
-  const identifiedTweet = DUMMY_TWITTS.find(t => t.id === props.tweetId);
-
-  const [formState, inputHandler] = useForm(
+  const [isLoading, setIsLoading] = useState(true)
+  const [formState, inputHandler, setFormData] = useForm(
     {
       content: {
+        value: '',
+        isValid: false,
+      },
+    },
+    false
+  );
+
+  const identifiedTweet = DUMMY_TWITTS.find(t => t.id === props.tweetId);
+
+  useEffect(()=>{
+    setFormData(    
+      {
+        content: {
         value: identifiedTweet.content,
-        isValid: true,
+        isValid: true ,
       },
     },
     true
-  );
+  )
+    setIsLoading(false)
+  }, [setFormData, identifiedTweet])
 
   const tweetSubmitHandler = (event) => {
     event.preventDefault();
@@ -57,14 +72,22 @@ const UpdateTweet = (props) => {
   };
 
   
-  // console.log(formState);
+  if (isLoading){
+    return ( 
+      <div className="center">
+        <h2>Loading...</h2>
+      </div>
+    )
+  }
   return (
     <>
+    {/* {formState.inputs.content.value &&  */}
       <form className="update-tweet__form" onSubmit={tweetSubmitHandler}>
         <Input
           id="content"
           element="input"
           type="text"
+          className='border'
           // label="Description"
           validators={[VALIDATOR_MINLENGTH(5)]}
           onInput={inputHandler}

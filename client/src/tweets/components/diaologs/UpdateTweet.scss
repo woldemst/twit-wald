@@ -3,4 +3,13 @@
 
 .update-tweet__form{
     padding: 0 20px;
+
+    .input-update{
+
+        border: none;
+
+        &:focus{
+            border: none;
+        }
+    }
 }
