@@ -18,6 +18,13 @@ $placeholder-color: #657786;
   &:focus-within {
     transition: all 0.2s;
     // box-shadow: 0 0 0 2px $primary-color;
+
+    &,
+    .char-counter__container {
+      .counter {
+        color: $border-color;
+      }
+    }
   }
 
   &:focus-within label {
@@ -44,11 +51,23 @@ $placeholder-color: #657786;
       border: none;
       box-shadow: none;
     }
+  }
 
-    &:not(:empty) {
-      ~ label {
-        top: 30%;
-      }
+  // input:focus ~ label,
+  // textarea:focus ~ label,
+  input:not(:placeholder-shown) ~ label{
+    top: -50px;
+  }
+  
+  .char-counter__container {
+    position: absolute;
+    right: 10px;
+    // transform: translate(-50%, -50%);
+    top: 10px;
+
+    .counter {
+      color: transparent;
+      font-size: 14px;
     }
   }
 
@@ -66,12 +85,11 @@ $placeholder-color: #657786;
 .form-control--invalid {
   border-color: red;
 
-  
   &:focus-within {
     transition: all 0.2s;
     box-shadow: none;
-    
-    label{
+
+    label {
       color: red;
     }
   }

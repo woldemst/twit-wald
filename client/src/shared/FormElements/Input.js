@@ -71,6 +71,9 @@ const Input = (props) => {
       />
     );
 
+    const charCount = inputState.value.length;
+    const maxChars = props.maxChars; // Change the maximum character limit here
+  
   return (
     <>
       <div
@@ -80,6 +83,13 @@ const Input = (props) => {
       >
         <label htmlFor={props.id}>{props.label}</label>
         {element}
+        {props.maxChars && 
+          <div className="char-counter__container">
+            <div className="counter">
+              {charCount} / {maxChars}
+            </div>
+          </div>
+        }
       </div>
       {!inputState.isValid && inputState.isTouched && <p className="error-text">{props.errorText}</p>};
     </>
