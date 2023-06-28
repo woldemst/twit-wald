@@ -1,10 +1,19 @@
-import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import { useEffect } from "react";
+import ReactDOM from "react-dom";
 
-import "./Modal.scss";
 import Backdrop from "./Backdrop";
 
+import "./Modal.scss";
+
 const ModalOverlay = (props) => {
+  useEffect(()=>{
+    if(props.show){
+      document.body.classList.add('no-scroll')
+    }else{
+      document.body.classList.remove('no-scroll')
+    }
+  }, [props.show])
   const content = (
     <div className={`modal ${props.className}`} style={props.style}>
       <div className="modal-container">
