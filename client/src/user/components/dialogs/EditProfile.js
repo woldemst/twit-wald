@@ -70,6 +70,7 @@ const EditProfile = (props) => {
             type="text"
             name="name"
             label="Name"
+            maxChars='50'
             onInput={inputHandler}
             validators={[VALIDATOR_MINLENGTH(4)]}
             errorText="Please enter a valid user name"
@@ -84,6 +85,7 @@ const EditProfile = (props) => {
             type="text"
             name="textBio"
             label="Bio"
+            maxChars='160'
             onInput={inputHandler}
             errorText="Please enter a valid text"
             validators={[VALIDATOR_REQUIRE()]}
@@ -99,6 +101,7 @@ const EditProfile = (props) => {
             type="text"
             name="location"
             label="Location"
+            maxChars='30'
             onInput={inputHandler}
             errorText="Please enter a valid Location"
             validators={[VALIDATOR_REQUIRE()]}
@@ -115,6 +118,7 @@ const EditProfile = (props) => {
             type="text"
             name="link"
             label="Link"
+            maxChars='100'
             onInput={inputHandler}
             errorText="Please enter a valid Link"
             validators={[VALIDATOR_LINK()]}

@@ -1,39 +1,44 @@
 import { useState } from "react";
 
-import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
+import {
+  VALIDATOR_EMAIL,
+  VALIDATOR_MINLENGTH,
+} from "../../../shared/util/validators";
 
 import Card from "../../../shared/UIElements/Card";
-import Input from '../../../shared/FormElements/Input'
+import Input from "../../../shared/FormElements/Input";
 import Button from "../../../shared/FormElements/Button";
 
 import "./Auth.scss";
+import { useForm } from "../../../shared/hooks/form-hook";
 
 const Auth = (props) => {
   const [useEmail, setUseEmail] = useState(false);
 
-  const [formData, setFormData] = useState({
-    userName: "",
-    email: "",
-    password: ''
-  })
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: value
-    }))
-    console.log(formData);
-  }
+  const [formState, inputHalndler] = useForm({
+    userName: {
+      value: "",
+      isValid: false,
+    },
+    email: {
+      value: "",
+      isValid: false,
+    },
+    phone: {
+      value: "",
+      isValid: false,
+    },
+    password: {
+      value: "",
+      isValid: false,
+    },
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData);
-  }
+    e.preventDefault();
+    console.log(formState.inputs);
+  };
 
-
-  const usePhoneHandler = () => setUseEmail(true);
-  const useEmailHandler = () => setUseEmail(false);
 
 
   return (
@@ -43,31 +48,35 @@ const Auth = (props) => {
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <Input
-            element='input'
-            type="text"
             id="userName"
+            type="text"
+            element="input"
+            className="border"
             name="userName"
             label="Name"
+            onInput={inputHalndler}
             validators={VALIDATOR_MINLENGTH(5)}
-            value={formData.userName}
-            onChange={handleChange}
-
+            initialValue={formState.inputs.userName.value}
+            initialValid={formState.inputs.userName.isValid}
           />
 
           {useEmail && (
             <div className="use-phone_container">
               <Input
-                element='input'
-                type="tel"
                 id="phone"
+                type="tel"
+                element="input"
+                className="border"
                 name="phone"
                 label="Phone"
-
+                onInput={inputHalndler}
+                initialValue={formState.inputs.phone.value}
+                initialValid={formState.inputs.phone.isValid}
               />
               <Button
                 className="input-change"
                 content="Use email instead"
-                onClick={useEmailHandler}
+                onClick={() => setUseEmail(false)}
               />
             </div>
           )}
@@ -75,20 +84,21 @@ const Auth = (props) => {
           {!useEmail && (
             <div className="use-email_container">
               <Input
-                element='input'
-                type="email"
-                name="email"
-                label='Email address'
-                validators={[VALIDATOR_EMAIL()]}
                 id="email"
-                onChange={handleChange}
-                value={formData.email}
-
+                type="email"
+                element="input"
+                className="border"
+                name="email"
+                label="Email address"
+                validators={[VALIDATOR_EMAIL()]}
+                onInput={inputHalndler}
+                initialValid={formState.inputs.email.isValid}
+                initialValue={formState.inputs.email.value}
               />
               <Button
                 className="input-change"
                 content="Use phone instead"
-                onClick={usePhoneHandler}
+                onClick={() => setUseEmail(true)}
               />
             </div>
           )}
@@ -98,7 +108,6 @@ const Auth = (props) => {
             This will not be shown publicly. Confirm your own age, even if this
             account is for a business, a pet, or something else.
           </p>
-
 
           <Button className="auth" content="Sign up" />
         </form>

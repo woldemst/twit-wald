@@ -46,7 +46,7 @@ const NewTweet = () => {
                 type="text"
                 placeholder="What's heppening?!"
                 className="new-tweet-input"
-                validators={[VALIDATOR_MINLENGTH(4)]}
+                validators={[VALIDATOR_MINLENGTH(1)]}
                 onInput={inputHandler}
                 value={formState.inputs.newTweetContent.value}
                 valid={formState.inputs.newTweetContent.isValid}

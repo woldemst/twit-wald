@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
 import { useForm } from "../../../shared/hooks/form-hook";
+
 import Input from "../../../shared/FormElements/Input";
 import Button from "../../../shared/FormElements/Button";
 import image from "../../../images/avatar.jpeg";
 
 import "./UpdateTweet.scss";
-import { useEffect, useState } from "react";
 
 const DUMMY_TWITTS = [
   {
