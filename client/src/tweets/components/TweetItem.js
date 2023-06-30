@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Avatar from "../../shared/UIElements/Avatar";
 import Dropdown from "../../shared/FormElements/Dropdown";
-import UpdateTweet from "./diaologs/UpdateTweet";
+import UpdateTweet from "./dialogs/UpdateTweet";
 import Button from "../../shared/FormElements/Button";
 import Modal from "../../shared/UIElements/Modal";
 
@@ -13,22 +13,28 @@ import likeIcon from "../../images/like.svg";
 import uploadIcon from "../../images/upload.svg";
 
 import "./TweetItem.scss";
+import DeleteTweet from "./dialogs/DeleteTweet";
 
 const TweetItem = (props) => {
-  const [showEditForm, setShowEditForm] = useState(false);
-
+  // dropdown states 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const options = [
-    { value: "option1", label: "Delete", onClick: () => {console.log('Delete function');} },
+    { value: "option1", label: "Delete", onClick: () => { setShowDeleteDialog(true) }},
     { value: "option2", label: "Edit", onClick: () => setShowEditForm(true) },
-    { value: "option3", label: "Pin to your profile", onClick: () => {console.log('Pin to profile');}},
+    { value: "option3", label: "Pin to your profile", onClick: () => { console.log("Pin to profile") }},
   ];
-
-
+  // dropdown's trigger 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
+
+  // states of edit functionality
+  const [showEditForm, setShowEditForm] = useState(false);
+
+  // states of delete functionality
+  const [showDeleteDiolog, setShowDeleteDialog] = useState(false);
+
 
   return (
     <>
@@ -51,6 +57,25 @@ const TweetItem = (props) => {
         }
       >
         <UpdateTweet tweetId={props.id} />
+      </Modal>
+      
+      {/* delete diolog  */}
+      <Modal
+        show={showDeleteDiolog}
+        headerClassName='warning__headline'
+        header={<h2>Delete Tweet?</h2>}
+        modalClassName='confirmation'
+        contentClass="delte-item__modal-content"
+        footer={
+          <>
+            <div className="button-container">
+                <Button content='Delete' className='delete' />
+                <Button content='Cancel' className='cancel' onClick={()=> setShowDeleteDialog(false)}/>
+            </div>
+          </>
+        }
+      >
+        <DeleteTweet  />
       </Modal>
 
       <div className="tweet-container">

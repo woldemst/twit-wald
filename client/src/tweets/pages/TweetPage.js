@@ -5,7 +5,7 @@ import Avatar from "../../shared/UIElements/Avatar";
 import Dropdown from "../../shared/FormElements/Dropdown";
 import Button from "../../shared/FormElements/Button";
 import Modal from "../../shared/UIElements/Modal"
-import UpdateTweet from "../components/diaologs/UpdateTweet";
+import UpdateTweet from "../components/dialogs/UpdateTweet";
 
 import commentsIcon from "../../images/chat.svg";
 import retweetIcon from "../../images/retweet.svg";

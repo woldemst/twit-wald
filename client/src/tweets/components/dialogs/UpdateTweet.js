@@ -40,31 +40,33 @@ const DUMMY_TWITTS = [
 ];
 
 const UpdateTweet = (props) => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const [formState, inputHandler, setFormData] = useForm(
     {
       content: {
-        value: '',
+        value: "",
         isValid: false,
       },
     },
     false
   );
 
-  const identifiedTweet = DUMMY_TWITTS.find(t => t.id === props.tweetId);
+  const identifiedTweet = DUMMY_TWITTS.find((t) => t.id === props.tweetId);
 
-  useEffect(()=>{
-    setFormData(    
-      {
-        content: {
-        value: identifiedTweet.content,
-        isValid: true ,
-      },
-    },
-    true
-  )
-    setIsLoading(false)
-  }, [setFormData, identifiedTweet])
+  useEffect(() => {
+    if (identifiedTweet) {
+      setFormData(
+        {
+          content: {
+            value: identifiedTweet.content,
+            isValid: true,
+          },
+        },
+        true
+      );
+    }
+    setIsLoading(false);
+  }, [setFormData, identifiedTweet]);
 
   const tweetSubmitHandler = (event) => {
     event.preventDefault();
@@ -72,23 +74,22 @@ const UpdateTweet = (props) => {
     console.log(formState.inputs.content.value);
   };
 
-  
-  if (isLoading){
-    return ( 
+  if (isLoading) {
+    return (
       <div className="center">
         <h2>Loading...</h2>
       </div>
-    )
+    );
   }
   return (
     <>
-    {/* {formState.inputs.content.value &&  */}
+      {/* {formState.inputs.content.value &&  */}
       <form className="update-tweet__form" onSubmit={tweetSubmitHandler}>
         <Input
           id="content"
           element="input"
           type="text"
-          className='border'
+          className="border"
           // label="Description"
           validators={[VALIDATOR_MINLENGTH(5)]}
           onInput={inputHandler}

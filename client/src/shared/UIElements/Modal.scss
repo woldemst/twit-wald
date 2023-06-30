@@ -8,7 +8,8 @@
   // height: 50%;
   z-index: 100;
   position: fixed;
-  top: 12vh;
+  top: 50%;
+  bottom: 50%;
   left: 0;
   right: 0;
   margin: auto;
@@ -22,17 +23,26 @@
   position: fixed;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
+  &-confirmation{
+    width: 300px;
+
+
+    .modal_content{
+      padding: 0;
+    }
+  }
+
 }
 
 .modal-container {
+  .modal_header{
 
-
-
+    &.no-header{
+      display: none;
+    }
+  }
   .modal_footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    // padding: 10px;
 
     &.tweet{
 
@@ -44,9 +54,8 @@
 
 
 .modal_header{
-  position: absolute;
   width: 100%;
-  top: 0;
+
   background-color: rgba(0, 0, 0, 0.65);
 
   .btn-container{
@@ -64,7 +73,6 @@
 
 
 .modal_content{
-  padding-top: 54px;
   height: 100%;
 
 }

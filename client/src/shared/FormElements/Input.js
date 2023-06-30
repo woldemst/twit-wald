@@ -73,6 +73,8 @@ const Input = (props) => {
 
     const charCount = inputState.value.length;
     const maxChars = props.maxChars; // Change the maximum character limit here
+
+
   
   return (
     <>

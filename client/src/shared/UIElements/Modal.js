@@ -7,15 +7,16 @@ import Backdrop from "./Backdrop";
 import "./Modal.scss";
 
 const ModalOverlay = (props) => {
-  useEffect(()=>{
-    if(props.show){
-      document.body.classList.add('no-scroll')
-    }else{
-      document.body.classList.remove('no-scroll')
+  useEffect(() => {
+    if (props.show) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
     }
-  }, [props.show])
+  }, [props.show]);
+   
   const content = (
-    <div className={`modal ${props.className}`} style={props.style}>
+    <div className={`modal modal-${props.modalClassName}`} >
       <div className="modal-container">
         <header className={`modal_header ${props.headerClassName}`}>
           {props.header}
@@ -23,7 +24,9 @@ const ModalOverlay = (props) => {
         <div className={`modal_content ${props.contentClass}`}>
           {props.children}
         </div>
-        <div className={`modal_footer ${props.footerClass}`}>{props.footer}</div>
+        <div className={`modal_footer ${props.footerClass}`}>
+          {props.footer}
+        </div>
       </div>
     </div>
   );
@@ -33,17 +36,10 @@ const ModalOverlay = (props) => {
 const Modal = (props) => {
   return (
     <>
-    {props.show && <Backdrop onClick={props.onClose} />}
-    <CSSTransition
-      in={props.show}
-      // mountOnEnter
-      // mountOnExit
-      unmountOnExit
-      timeout={200}
-      className="modal"
-    >
-      <ModalOverlay {...props} />
-    </CSSTransition>
+      {props.show && <Backdrop onClick={props.onClose} />}
+      <CSSTransition in={props.show} unmountOnExit className="modal">
+        <ModalOverlay {...props} />
+      </CSSTransition>
     </>
   );
 };

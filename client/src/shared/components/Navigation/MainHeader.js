@@ -7,7 +7,7 @@ import "./MainHeader.scss";
 import Button from "../../FormElements/Button";
 import Modal from "../../UIElements/Modal";
 import { useState } from "react";
-import NewTweet from "../../../tweets/components/diaologs/NewTweet";
+import NewTweet from "../../../tweets/components/dialogs/NewTweet";
 
 const Header = () => {
   const [showNewTweet, setShowNewTweet] = useState(false);
