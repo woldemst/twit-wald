@@ -5,6 +5,14 @@ import Card from "../../../shared/UIElements/Card";
 import { USERS } from "../../../user/pages/UserProfile";
 import Button from "../../../shared/FormElements/Button";
 import { useForm } from "../../../shared/hooks/form-hook";
+
+import globusIcon from '../../../images/globus.svg'
+import imageIcon from '../../../images/image.svg'
+import gifIcon from '../../../images/gif.svg'
+import chooseIcon from '../../../images/choose.svg'
+import smileIcon from '../../../images/smile.svg'
+import reminderIcon from '../../../images/reminder.svg'
+import locationIcon from '../../../images/location.svg'
 import "./NewTweet.scss";
 
 const NewTweet = () => {
@@ -29,20 +37,16 @@ const NewTweet = () => {
     <>
       <Card className="new-tweet-card">
         <div className="new-tweet-card-container">
-          <Avatar image={avatar} className="new-tweet" />
 
           <div className="tweet-form__container">
             <form className="tweet-form" onSubmit={tweetSubmitHandler}>
-              {/* <select name="circle">
-                <option value='01' disabled selected>
-                  Everyone
-                </option>
-                <option value="02">Twitter Circle</option>
-              </select> */}
+
+            <div className="container">
+              <Avatar image={avatar} className="new-tweet" />
 
               <Input
                 id="newTweetContent"
-                element="input"
+                element="textarea"
                 type="text"
                 placeholder="What's heppening?!"
                 className="new-tweet-input"
@@ -51,19 +55,21 @@ const NewTweet = () => {
                 value={formState.inputs.newTweetContent.value}
                 valid={formState.inputs.newTweetContent.isValid}
               />
+            </div>
+
 
               <div className="replay__container">
-                <div className="icon">*</div>
+                <div className="icon"><img src={globusIcon} alt="" /></div>
                 <div className="select-replier">Who can reply ?</div>
               </div>
               <div className="tweet-footer__container">
                 <div className="tweet-options">
-                  <div className="image-icon icon">*</div>
-                  <div className="gif-icon icon">*</div>
-                  <div className="choice-icon icon">*</div>
-                  <div className="emoji-icon icon">*</div>
-                  <div className="sheduld-icon icon">*</div>
-                  <div className="location-icon icon">*</div>
+                  <div className="image-icon icon"><img src={imageIcon} alt="" /></div>
+                  <div className="gif-icon icon"><img src={gifIcon} alt="" /></div>
+                  <div className="choice-icon icon"><img src={chooseIcon} alt="" /></div>
+                  <div className="emoji-icon icon"><img src={smileIcon} alt="" /></div>
+                  <div className="sheduld-icon icon"><img src={reminderIcon} alt="" /></div>
+                  <div className="location-icon icon"><img src={locationIcon} alt="" /></div>
                 </div>
                 <div className="tweet-btn">
                   <Button

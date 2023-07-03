@@ -16,7 +16,7 @@
   border-radius: 20px;
   background: #000;
   height: max-content;
-  min-height: 280px;
+  // min-height: 280px;
   max-height: 650px;
   width: 600px;
   overflow-y: scroll;
@@ -32,17 +32,25 @@
     }
   }
 
+  &-new-tweet{
+    top: 10%;
+  }
+
 }
 
 .modal-container {
   .modal_header{
-
+    padding: 10px;
     &.no-header{
       display: none;
     }
   }
   .modal_footer {
     width: 100%;
+
+    &.no-footer{
+      display: none;
+    }
 
     &.tweet{
 

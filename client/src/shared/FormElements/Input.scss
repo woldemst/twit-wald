@@ -34,7 +34,7 @@ $placeholder-color: #657786;
 
     transition: all 0.2s;
   }
-
+  textarea,
   input {
     display: inline-block;
     border: none;
@@ -53,6 +53,9 @@ $placeholder-color: #657786;
     }
   }
 
+    textarea {
+      resize: none;
+    }
   // input:focus ~ label,
   // textarea:focus ~ label,
   input:not(:placeholder-shown) ~ label{
@@ -79,6 +82,9 @@ $placeholder-color: #657786;
       transition: all 0.2s;
       box-shadow: 0 0 0 2px $primary-color;
     }
+  }
+  &-new-tweet-input{
+    width: 100%;
   }
 }
 

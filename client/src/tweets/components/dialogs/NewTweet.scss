@@ -1,17 +1,30 @@
 
+.new-tweet-card{
+    padding: 20px 20px 10px;
+}
+
+.no-display{
+    display: none;
+}
 
 .tweet-form__container{
     width: 100%;
 
     .tweet-form{
-
+        .container{
+            display: flex;
+        }
 
         .replay__container{
             display: flex;
-            
+            align-items: center;
+            padding: 10px 5px;
+
             .icon{
                 color: #fff;
                 margin-right: 10px;
+                max-width: 18px;
+                max-height: 18px;
             }
             .select-replier{
                 color: #1DA1F2;
@@ -26,6 +39,7 @@
 // jsx is in modal footer 
 .tweet-footer__container{
     display: flex;
+    padding-top: 10px;
     // position: absolute;
     // bottom: 0;
     width: 100%;
@@ -37,9 +51,11 @@
         width: 100%;
         align-items: center;
         padding: 0 20px;
-
+        justify-content: space-between;
         .icon{
             color: #fff;
+            // height: 16px;
+            // width: 16px;
         }
     }
 }

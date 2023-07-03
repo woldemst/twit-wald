@@ -21,6 +21,7 @@ const Header = () => {
       <Modal
         show={showNewTweet}
         onClose={() => setShowNewTweet(false)}
+        modalClassName='new-tweet'
         header={
           <Button
             content="✕"
@@ -28,7 +29,7 @@ const Header = () => {
             onClick={() => setShowNewTweet(false)}
           />
         }
-        footerClass="tweet"
+        footerClass="no-footer"
       >
         <NewTweet />
       </Modal>
