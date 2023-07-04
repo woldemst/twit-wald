@@ -7,6 +7,7 @@ import Button from "../../shared/FormElements/Button";
 import Modal from "../../shared/UIElements/Modal"
 import UpdateTweet from "../components/dialogs/UpdateTweet";
 
+import arrowBack from '../../images/arrow-left.svg'
 import commentsIcon from "../../images/chat.svg";
 import retweetIcon from "../../images/retweet.svg";
 import likeIcon from "../../images/like.svg";
@@ -59,7 +60,11 @@ const TweetPage = (props) => {
 
       <div className="tweet-page__header">
         <div className="back-btn__container">
-          <Button content="<" className="back" onClick={handleGoBack} />
+          <Button content={
+            <>
+            <img src={arrowBack} alt="" />
+            </>
+          } className="back" onClick={handleGoBack} />
         </div>
         <div className="btn-headline">Tweet</div>
       </div>

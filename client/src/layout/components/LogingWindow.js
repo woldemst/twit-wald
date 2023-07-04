@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Button from "../FormElements/Button";
-import Modal from "../UIElements/Modal";
+import Button from "../../shared/FormElements/Button";
+import Modal from "../../shared/UIElements/Modal";
 import Auth from '../../user/components/dialogs/Auth'
 
 import "./LogingWindow.scss";

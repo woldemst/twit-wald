@@ -6,17 +6,18 @@ import AsideRight from "./layout/columns/AsideRight";
 
 import "./App.scss";
 
-import MainNavigation from "./shared/components/Navigation/MainNavigation";
-import TweetItem from "./tweets/components/TweetItem";
-import Usertweets from "./tweets/pages/UserTweets";
-import TweetPage from "./tweets/pages/TweetPage";
+
+// import TweetItem from "./tweets/components/TweetItem";
+// import Usertweets from "./tweets/pages/UserTweets";
+// import TweetPage from "./tweets/pages/TweetPage";
 import CertainTweet from "./tweets/pages/CertainTweet";
+import MainHeader from "./layout/components/Navigation/MainHeader";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="main-container">
-        <MainNavigation />
+        <MainHeader />
         <main className="content">
           <div className="main-feed column">
             <Routes>

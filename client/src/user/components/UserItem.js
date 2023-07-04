@@ -6,6 +6,10 @@ import Avatar from "../../shared/UIElements/Avatar";
 import Modal from "../../shared/UIElements/Modal";
 import EditProfile from "./dialogs/EditProfile";
 
+import arrowLeft from '../../images/arrow-left.svg'
+import locationIcon from '../../images/profile/location.svg'
+import linkIcon from '../../images/profile/link.svg'
+import calendarIcon from '../../images/profile/calendar.svg'
 import bg from "../../images/bg.jpg";
 import "./UserItem.scss";
 
@@ -45,7 +49,9 @@ const UserItem = (props) => {
         <div className="user-profile__content">
           <div className="user-profile__header">
             <div className="back-btn__container">
-              <Button content="<" className="back" onClick={handleGoBack} />
+              <Button content={<>
+                <img src={arrowLeft} alt="" />
+              </>} className="back" onClick={handleGoBack} />
             </div>
 
             <div className="header__user-info">
@@ -88,11 +94,11 @@ const UserItem = (props) => {
             </div>
             <div className="registration-info">
               <div className="location-container">
-                <div className="location-icon">*</div>
+                <div className="location-icon"><img src={locationIcon} alt="" /></div>
                 <div className="location">Germany</div>
               </div>
               <div className="link-container">
-                <div className="link-icon">*</div>
+                <div className="link-icon"><img src={linkIcon} alt="" /></div>
                 <a
                   // href={props.link}
                   href="#"
@@ -102,7 +108,7 @@ const UserItem = (props) => {
                 </a>
               </div>
               <div className="date-container">
-                <div className="date-icon">*</div>
+                <div className="date-icon"><img src={calendarIcon} alt="" /></div>
                 <div className="date">Joined May 2023</div>
               </div>
             </div>

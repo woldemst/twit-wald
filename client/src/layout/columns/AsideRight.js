@@ -1,4 +1,4 @@
-import LogingWindow from "../../shared/components/LogingWindow";
+import LogingWindow from "../components/LogingWindow";
 
 import "./AsideRight.scss";
 
