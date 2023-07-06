@@ -22,8 +22,8 @@ function App() {
           <div className="main-feed column">
             <Routes>
               <Route path="/" element={<Main />} exact />
-              <Route path="/profile" element={<UserPage />} exact />
-              <Route path="/profile/status/:tweetId" element={<CertainTweet /> } />
+              <Route path="/:userId" element={<UserPage />} exact />
+              <Route path="/:userId/status/:tweetId" element={<CertainTweet /> } />
             </Routes>
           </div>
           <div className="column aside-right">

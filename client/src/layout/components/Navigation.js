@@ -7,7 +7,9 @@ const Navigation = (props) => {
         <ul>
           <li>Explore</li>
           <li>Settings</li>
-          <li><Link to='/profile'>Profile</Link></li>
+          <li><Link to='/u1'>Profile</Link></li>
+          {/* <li><Link to={`/${props.id}`}>Profile</Link></li> */}
+
         </ul>
       </div>
     </>

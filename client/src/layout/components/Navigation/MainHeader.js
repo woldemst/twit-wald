@@ -37,6 +37,7 @@ const MainHeader = () => {
           </Link>
 
           <Navigation />
+          
           <Button
             content="Tweet"
             className="tweet"

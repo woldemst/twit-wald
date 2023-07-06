@@ -58,17 +58,16 @@ const EditProfile = (props) => {
     true
   );
 
-    console.log(formState)
   return (
     <>
       <Card className="edit-profile">
         <form className="edit-form">
           <Input
             id="name"
+            name="name"
+            type="text"
             element="input"
             className='border'
-            type="text"
-            name="name"
             label="Name"
             maxChars='50'
             onInput={inputHandler}

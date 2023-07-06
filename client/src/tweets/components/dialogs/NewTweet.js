@@ -2,7 +2,7 @@ import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
 import Input from "../../../shared/FormElements/Input";
 import Avatar from "../../../shared/UIElements/Avatar";
 import Card from "../../../shared/UIElements/Card";
-import { USERS } from "../../../user/pages/UserProfile";
+import {USERS} from '../../../user/pages/UserPage'
 import Button from "../../../shared/FormElements/Button";
 import { useForm } from "../../../shared/hooks/form-hook";
 
