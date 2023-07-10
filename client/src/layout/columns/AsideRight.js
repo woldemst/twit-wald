@@ -4,10 +4,15 @@ import "./AsideRight.scss";
 import { useContext } from "react";
 
 const AsideRight = () => {
-  const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext)
   return (
     <>
-      <div className="aside-content">{auth.isLoggedIn && <LogingWindow />}</div>
+      <div className="aside-content">
+
+        {/* {auth.isLoggedIn &&  */}
+        <LogingWindow />
+        {/* } */}
+      </div>
     </>
   );
 };

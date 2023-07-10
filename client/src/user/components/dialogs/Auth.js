@@ -5,7 +5,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../../shared/util/validators";
 
-import { AuthContext } from "../../../shared/context/auth-context";
+// import { AuthContext } from "../../../shared/context/auth-context";
 import Card from "../../../shared/UIElements/Card";
 import Input from "../../../shared/FormElements/Input";
 import Button from "../../../shared/FormElements/Button";
@@ -16,19 +16,28 @@ import "./Auth.scss";
 const formReducer = (state, action) => {
   switch (action.type) {
     case 'INPUT_CHANGE':
-      let formIsValid = true; 
+      const updatedInputs = {
+        ...state.inputs, 
+        [action.inputId]: {value: action.value, isValid: action.isValid}
+      }
+
+      let updatedFormIsValid  = true;
+      for (const inputId in updatedInputs){
+        if (inputId === 'isValid'){
+          continue;
+        }
+        updatedFormIsValid = updatedFormIsValid && updatedInputs[inputId].isValid
+      }
       return {
         ...state, 
-        inputs: {
-          ...state.inputs, 
-          [action.inputId]: {value: action.value, isValid: action.isValid}
-        },
-        isValid: formIsValid
+        inputs: updatedInputs, 
+        isValid: updatedFormIsValid
+
       }
     case 'SET_DATA':
       return { 
         inputs: action.inputs, 
-        isValid: action.isValid
+        isValid: action.formIsValid
       }
     default:
       return state;
@@ -37,25 +46,26 @@ const formReducer = (state, action) => {
 
 
 const initialInputs = {
-  inputs: {
-    email: {
-      value: "",
-      isValid: false,
-    },
-    password: {
-      value: "",
-      isValid: false,
-    },
+  email: {
+    value: "",
+    isValid: false,
+  },
+  password: {
+    value: "",
+    isValid: false,
   },
   isValid: false,
 };
 
 
 const Auth = (props) => {
-  const auth = useContext(AuthContext)
+  // const auth = useContext(AuthContext)
 
   const [isLoginMode, setIsLoginMode] = useState(true)
-  const [formState, dispatch] = useReducer(formReducer, initialInputs)
+  const [formState, dispatch] = useReducer(formReducer, {
+    inputs: initialInputs, 
+    isValid: false 
+  })
 
   const inputHandler = useCallback((id, value, isValid) => {
     dispatch({
@@ -88,7 +98,7 @@ const Auth = (props) => {
       setFormData(
         {
           ...formState.inputs,
-          name: {
+          userName: {
             value: '',
             isValid: false
           }
