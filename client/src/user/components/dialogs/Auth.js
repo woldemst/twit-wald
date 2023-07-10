@@ -1,36 +1,79 @@
-import { useState } from "react";
+import {useCallback, useContext, useReducer, useState } from "react";
 
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
-  VALIDATOR_REQUIRE,
 } from "../../../shared/util/validators";
 
+import { AuthContext } from "../../../shared/context/auth-context";
 import Card from "../../../shared/UIElements/Card";
 import Input from "../../../shared/FormElements/Input";
 import Button from "../../../shared/FormElements/Button";
 
 import "./Auth.scss";
-import { useForm } from "../../../shared/hooks/form-hook";
+// import { useForm } from "../../../shared/hooks/form-hook";
+
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case 'INPUT_CHANGE':
+      let formIsValid = true; 
+      return {
+        ...state, 
+        inputs: {
+          ...state.inputs, 
+          [action.inputId]: {value: action.value, isValid: action.isValid}
+        },
+        isValid: formIsValid
+      }
+    case 'SET_DATA':
+      return { 
+        inputs: action.inputs, 
+        isValid: action.isValid
+      }
+    default:
+      return state;
+  }
+}
+
+
+const initialInputs = {
+  inputs: {
+    email: {
+      value: "",
+      isValid: false,
+    },
+    password: {
+      value: "",
+      isValid: false,
+    },
+  },
+  isValid: false,
+};
+
 
 const Auth = (props) => {
-  // const [useEmail, setUseEmail] = useState(false);
+  const auth = useContext(AuthContext)
 
   const [isLoginMode, setIsLoginMode] = useState(true)
+  const [formState, dispatch] = useReducer(formReducer, initialInputs)
 
-  const [formState, inputHandler, setFormData] = useForm(
-    {
-      email: {
-        value: "",
-        isValid: false,
-      },
-      password: {
-        value: "",
-        isValid: false,
-      },
-    },
-    false
-  );
+  const inputHandler = useCallback((id, value, isValid) => {
+    dispatch({
+      type: 'INPUT_CHANGE', 
+      value: value, 
+      isValid: isValid, 
+      inputId: id
+    })
+  }, [] )
+
+  const setFormData = useCallback((inputData, formValidity) => {
+    dispatch({
+      type: 'SET_DATA', 
+      inputs: inputData, 
+      formIsValid: formValidity
+    })
+  }, [])
+
 
   const switchModeHandler = () => {
     if (!isLoginMode) {
@@ -58,6 +101,7 @@ const Auth = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log(formState.inputs);
   };
 
@@ -78,6 +122,7 @@ const Auth = (props) => {
               onInput={inputHandler}
               validators={[VALIDATOR_MINLENGTH(5)]}
               initialValue={formState.inputs.userName.value}
+
               initialValid={formState.inputs.userName.isValid}
             />
           )}
@@ -123,9 +168,7 @@ const Auth = (props) => {
           <Button
             className="auth"
             disabled={!formState.isValid}
-            content={<>
-              {isLoginMode ? 'Login' : 'Sign up'}
-            </>}
+            content={<>{isLoginMode ? 'Login' : 'Sign up'}</>}
           />
           <Button
             className="input-change"

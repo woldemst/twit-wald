@@ -16,8 +16,8 @@ import locationIcon from '../../../images/location.svg'
 import "./NewTweet.scss";
 
 const NewTweet = () => {
-  const avatar = USERS.map((user) => user.image);
-
+  const avatar = USERS.find((user) => user.image);
+    console.log(avatar);
     const [formState, inputHandler] = useForm(
     {
       newTweetContent: {

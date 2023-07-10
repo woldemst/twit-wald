@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Navigation from "../Navigation";
@@ -6,11 +6,13 @@ import Button from "../../../shared/FormElements/Button";
 import Modal from "../../../shared/UIElements/Modal";
 import NewTweet from "../../../tweets/components/dialogs/NewTweet";
 
+import { AuthContext } from "../../../shared/context/auth-context";
 import logo from "../../../images/logo.svg";
 import "./MainHeader.scss";
 
 const MainHeader = () => {
   const [showNewTweet, setShowNewTweet] = useState(false);
+  const auth = useContext(AuthContext)
 
   return (
     <>
@@ -38,11 +40,13 @@ const MainHeader = () => {
 
           <Navigation />
           
-          <Button
-            content="Tweet"
-            className="tweet"
-            onClick={() => setShowNewTweet(true)}
-          />
+          {/* {auth.isLoggedIn &&  */}
+            <Button
+              content="Tweet"
+              className="tweet"
+              onClick={() => setShowNewTweet(true)}
+            />
+          {/* } */}
         </div>
       </div>
 
