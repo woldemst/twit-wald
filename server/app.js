@@ -4,6 +4,15 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 const app = express();
 
+const usersRoutes = require('./routes/users-routes')
+
+app.use(bodyParser.json)
+
+
+
+// app.use('/api/users', usersRoutes)
+
+
 app.use((error, req, res, next) => {
     if(res.headerSent){
         return next(error)
@@ -11,6 +20,8 @@ app.use((error, req, res, next) => {
     res.status(error.code || 500)
     res.json({message: error.message || 'An uknown error occured!'})
 })
+
+
 app.listen(8000)
 
 
