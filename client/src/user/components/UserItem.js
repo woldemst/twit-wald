@@ -7,9 +7,9 @@ import Modal from "../../shared/UIElements/Modal";
 import EditProfile from "./dialogs/EditProfile";
 
 import arrowLeft from '../../images/arrow-left.svg'
-import locationIcon from '../../images/profile/location.svg'
-import linkIcon from '../../images/profile/link.svg'
-import calendarIcon from '../../images/profile/calendar.svg'
+import locationIcon from '../../images/location.svg'
+import linkIcon from '../../images/link.svg'
+import calendarIcon from '../../images/calendar.svg'
 import bg from "../../images/bg.jpg";
 import "./UserItem.scss";
 
