@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser")
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 // const jsonwebtoken = require("jsonwebtoken")
 const app = express();
 const port = 8000;
@@ -28,28 +28,26 @@ app.use((error, req, res, next) => {
 })
 
 
+const connectionURL = "mongodb+srv://woldemst:woldemst@twittcluster.av2nweb.mongodb.net/twittWald?retryWrites=true&w=majority";
+const connectionOptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    writeConcern: { w: "majority" },
+}
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-})
+mongoose
+    .connect(connectionURL, connectionOptions)
+    .then(()=>{
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
+        })
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 
+    
 
-// mongoose
-//     .connect(
-//     "mongodb+srv://woldemst:WeinertW1480@twittcluster.av2nweb.mongodb.net/?retryWrites=true&w=majority",
-//     {
-//         useNewUrlParser: true,
-//         useUnifieldTopology: true,
-//         writeConcern: { w: "majority" },
-//     }
-//     )
-//     .then(()=>{
-//         app.listen(8000)
-//         console.log("port connected");
-//     })
-//     .catch((err) => {
-//         console.log(err)
-//     })
+    
 
-
-
+    
