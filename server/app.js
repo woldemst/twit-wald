@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose");
 // const jsonwebtoken = require("jsonwebtoken")
+const cors = require('cors')
+
 const app = express();
 const port = 8000;
 const HttpError = require("./models/http-error");
@@ -9,6 +11,7 @@ const HttpError = require("./models/http-error");
 const usersRoutes = require('./routes/users-routes');
 
 app.use(bodyParser.json())
+app.use(cors())
 
 
 // Routes 
@@ -32,7 +35,6 @@ const connectionURL = "mongodb+srv://woldemst:woldemst@twittcluster.av2nweb.mong
 const connectionOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    writeConcern: { w: "majority" },
 }
 
 mongoose

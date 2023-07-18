@@ -1,4 +1,5 @@
-import {useCallback, useContext, useReducer, useState } from "react";
+import {useCallback, useReducer, useState } from "react";
+import axios from 'axios'
 
 import {
   VALIDATOR_EMAIL,
@@ -11,7 +12,6 @@ import Input from "../../../shared/FormElements/Input";
 import Button from "../../../shared/FormElements/Button";
 
 import "./Auth.scss";
-// import { useForm } from "../../../shared/hooks/form-hook";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -109,10 +109,37 @@ const Auth = (props) => {
     setIsLoginMode(prevMode => !prevMode);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formState.inputs);
+
+
+    if(!isLoginMode){
+      try {
+        const response = await axios.post('http://localhost:8000/api/users/register', {
+          userName: formState.inputs.userName.value,
+          email: formState.inputs.email.value, 
+          password: formState.inputs.password.value
+        })
+
+        console.log(response)
+      } catch (err) {
+        console.log(err);
+        
+      }
+
+    }else{
+      try {
+        const response = await axios.post('http://localhost:8000/api/users/login', {
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value
+        })
+  
+        console.log(response);
+      } catch (err) {
+        console.log(err)
+      }
+    }
   };
 
   return (
@@ -192,3 +219,4 @@ const Auth = (props) => {
 };
 
 export default Auth;
+

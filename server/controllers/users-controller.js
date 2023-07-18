@@ -1,14 +1,8 @@
 const HttpError = require("../models/http-error");
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
-// const DUMMY_USERS = [
-//   {
-//     id: "u1",
-//     name: "Max Schwarz",
-//     email: "test@test.com",
-//     password: "testers",
-//   },
-// ];
+const API_URL = "http://localhost:8000/api";
 
 const getUsers = async (req, res, next) => {
   try {
@@ -18,39 +12,123 @@ const getUsers = async (req, res, next) => {
     console.log(err);
     res.status(500).json({ message: "Server error" });
   }
-  // res.json({users: DUMMY_USERS})
+};
+
+const register = async (req, res, next) => {
+  // destructuring assignment from body
+  const { userName, email, password } = req.body;
+
+  // check if a user with the same email exists using the User model
+  let existingUser;
+  try {
+    existingUser = await User.findOne({ email });
+  } catch (err) {
+    const error = new HttpError(
+      "Signing up failed, please try agail later.",
+      500
+    );
+    return next(error);
+  }
+
+  if (existingUser) {
+    const error = new HttpError(
+      "User exist already, please login instead.",
+      422
+    );
+    return next(error);
+  }
+
+  // hashing the password
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(password, 12);
+  } catch (err) {
+    const error = new HttpError(
+      "Could not create user, pleadse try again.",
+      500
+    );
+    return next(error);
+  }
+
+  //create new user
+
+  const createdUser = new User({
+    name: userName,
+    email: email,
+    password: hashedPassword,
+    tweets: [],
+  });
+
+  try {
+    await createdUser.save(); 
+  } catch (err) {
+    const error = new HttpError(
+      "Signing up failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+
+  res
+  .status(201)
+  .json({userId: createdUser.id, email: createdUser.email})
 };
 
 const login = async (req, res, next) => {
-  try {
+
     const { email, password } = req.body;
 
-    // find user by email 
-    const identifiedUser = await User.findOne({ email });
-    if(!identifiedUser){
-        return res.status(401).json({message: 'Invalid email or password'})
+    let identifiedUser;
+
+    try {
+      // find user by email
+      identifiedUser = await User.findOne({ email });      
+    } catch (err) {
+      const error = new HttpError(
+        'Logging in failed, please try again later.',
+        500
+      );
+
+      return next(error)
     }
- 
-    // compare the password 
-    // const isPasswordValid = 
-
-    
-    // if (!identifiedUser || identifiedUser.password !== password) {
-    //   throw new HttpError(
-    //     "Could not identify user, credentials seem to be wrong",
-    //     401
-    //   );
-    // }
-
-    
-    res.json(identifiedUser);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Server error" });
-  }
 
 
+    if (!identifiedUser) {
+      const error = new HttpError(
+        'Invalid credentials, could not log you in.',
+        401
+      );
+      return next(error)
+    }
+
+    // compare the password
+    let isValidPassword = false;
+    try {
+      isValidPassword = await bcrypt.compare(password, identifiedUser.password);
+      
+    } catch (err) {
+      const error = new HttpError(
+        'Could not log you in, please check your credentials and try again.',
+        500
+      );
+      return next(error);
+    }
+
+    if (!isValidPassword) { 
+      const error = new HttpError(
+        'Invalid credentials, could not log you in.',
+        403
+      );
+      return next(error);
+    }
+
+    // res.json({
+    //     userId: identifiedUser.id, 
+    //     email: identifiedUser.email
+    //  });
+    res.json(identifiedUser)
 };
 
-exports.login = login;
 exports.getUsers = getUsers;
+exports.register = register;
+exports.login = login;
