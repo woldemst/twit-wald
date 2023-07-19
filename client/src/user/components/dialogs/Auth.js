@@ -1,4 +1,5 @@
-import {useCallback, useReducer, useState } from "react";
+import {useCallback, useContext, useReducer, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 import {
@@ -6,7 +7,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../../shared/util/validators";
 
-// import { AuthContext } from "../../../shared/context/auth-context";
+import { AuthContext } from "../../../shared/context/auth-context";
 import Card from "../../../shared/UIElements/Card";
 import Input from "../../../shared/FormElements/Input";
 import Button from "../../../shared/FormElements/Button";
@@ -59,9 +60,12 @@ const initialInputs = {
 
 
 const Auth = (props) => {
-  // const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext)
+
+  const navigate = useNavigate()
 
   const [isLoginMode, setIsLoginMode] = useState(true)
+
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: initialInputs, 
     isValid: false 
@@ -114,7 +118,24 @@ const Auth = (props) => {
 
 
 
-    if(!isLoginMode){
+    if(isLoginMode){
+      try {
+        const response = await axios.post('http://localhost:8000/api/users/login', {
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value
+        })
+        // setIsLoginMode(false);
+        // console.log(response.data._id);
+
+        auth.login(response.data._id)
+        console.log(auth);
+        navigate('/')
+        props.onLogginSuccess()
+      } catch (err) {
+        console.log(err)
+      }
+
+    }else{
       try {
         const response = await axios.post('http://localhost:8000/api/users/register', {
           userName: formState.inputs.userName.value,
@@ -122,22 +143,15 @@ const Auth = (props) => {
           password: formState.inputs.password.value
         })
 
+
         console.log(response)
+        
+        navigate('/')
+        props.onLogginSuccess()
+
       } catch (err) {
         console.log(err);
         
-      }
-
-    }else{
-      try {
-        const response = await axios.post('http://localhost:8000/api/users/login', {
-          email: formState.inputs.email.value,
-          password: formState.inputs.password.value
-        })
-  
-        console.log(response);
-      } catch (err) {
-        console.log(err)
       }
     }
   };

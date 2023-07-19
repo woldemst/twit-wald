@@ -10,6 +10,7 @@ const LogingWindow = () => {
   const [showAuthForm, setShowAuthForm] = useState(false);
   //   const [isLogingMode, setIsLogingMode] = useState(false);
 
+
   return (
     <>
       <div className="logging-banner_container">
@@ -29,7 +30,7 @@ const LogingWindow = () => {
               />
             }
           >
-            <Auth />
+            <Auth onLogginSuccess={()=>setShowAuthForm(false)} />
           </Modal>
           <Button
             onClick={() => setShowAuthForm(true)}
