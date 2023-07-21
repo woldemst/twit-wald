@@ -16,6 +16,13 @@ const UsersList = (props) => {
           id={user.id}
           image={user.image}
           name={user.name}
+          nickname={user.nickname}
+          bio={user.bio}
+          location={user.location}
+          link={user.link}
+          joined={user.joined}
+          followers={user.followers}
+          following={user.following}
           tweetCount={user.tweets}
         />
       ))}

@@ -13,16 +13,15 @@ import chooseIcon from '../../../images/choose.svg'
 import smileIcon from '../../../images/smile.svg'
 import reminderIcon from '../../../images/reminder.svg'
 import locationIcon from '../../../images/location.svg'
+
 import "./NewTweet.scss";
 
 const NewTweet = () => {
-  const avatar = USERS.find((user) => user.image);
-    console.log(avatar);
-    const [formState, inputHandler] = useForm(
-    {
-      newTweetContent: {
-        value: "",
-        isValid: false,
+  const avatar = USERS.map((user) => user.image);
+  const [formState, inputHandler] = useForm({
+    newTweetContent: {
+      value: "",
+      isValid: false,
       },
     },
     false

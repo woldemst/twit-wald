@@ -124,12 +124,10 @@ const Auth = (props) => {
           email: formState.inputs.email.value,
           password: formState.inputs.password.value
         })
-        // setIsLoginMode(false);
-        // console.log(response.data._id);
 
         auth.login(response.data._id)
-        console.log(auth);
-        navigate('/')
+
+        // navigate('/')
         props.onLogginSuccess()
       } catch (err) {
         console.log(err)
@@ -147,7 +145,7 @@ const Auth = (props) => {
         console.log(response)
         
         navigate('/')
-        props.onLogginSuccess()
+        // props.onLogginSuccess()
 
       } catch (err) {
         console.log(err);

@@ -69,12 +69,18 @@
         display: flex;
         justify-content: space-between;
 
-        .user-profile__image {
-            img {
-                position: absolute;
-                top: 180px;
+        .user-content{
+            margin-top: 40px;
+
+            .user-profile__image {
+                img {
+                    position: absolute;
+                    top: 180px;
+                }
             }
+
         }
+
     }
 
     .profile-name__container {
