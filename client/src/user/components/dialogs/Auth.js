@@ -125,13 +125,10 @@ const Auth = (props) => {
           password: formState.inputs.password.value
         })
 
-        const token = response.data; 
-
-        auth.login(token)
+        // Store the token in localStorage 
+        auth.login(response.data.userId, response.data.token)
 
         // navigate('/')
-        console.log(auth);
-        console.log(token);
         props.onLogginSuccess()
       } catch (err) {
         console.log(err)

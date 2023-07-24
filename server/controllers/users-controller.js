@@ -73,6 +73,23 @@ const register = async (req, res, next) => {
     return next(error);
   }
 
+  let token;
+
+  try {
+    token = jwt.sign(
+      {userId: createdUser.id, email: createdUser.email},
+      'secret-super-key',
+      {expiresIn: '1h'}
+      
+    )
+  } catch (err) {
+    const error = new HttpError(
+      "Signing up failed, please try again later.",
+      500
+    );
+    next(error)
+  }
+
   res
   .status(201)
   .json({userId: createdUser.id, email: createdUser.email})
@@ -126,12 +143,30 @@ const login = async (req, res, next) => {
       return next(error);
     }
 
-    const token =  generateJwtToken(identifiedUser._id)
-    // res.json({
-    //     userId: identifiedUser.id, 
-    //     email: identifiedUser.email
-    //  });
-    res.json(token)
+    let token;
+
+    try {
+      token = jwt.sign(
+        {userId: identifiedUser.id, email: identifiedUser.email},
+        'super-secret-key',
+        {expiresIn: '1h'}
+      )
+    } catch (err) {
+      const error = new HttpError(
+        'Logging in failed, please try again later.',
+        500
+      );
+      next(error)
+    }
+
+    // const token = generateJwtToken(identifiedUser._id)
+    // res.json({token})
+
+    res.json({
+        userId: identifiedUser.id, 
+        email: identifiedUser.email,
+        token: token
+     });
 };
 
 exports.getUsers = getUsers;
