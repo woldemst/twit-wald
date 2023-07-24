@@ -8,6 +8,7 @@ const port = 8000;
 const HttpError = require("./models/http-error");
 
 const usersRoutes = require('./routes/users-routes');
+const tweetRoutes = require('./routes/tweet-routes')
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -15,6 +16,7 @@ app.use(cors())
 
 // Routes 
 app.use('/api/users', usersRoutes)
+app.use('/api/tweets', tweetRoutes)
 
 app.use((req, res, next) => {
     const error = new HttpError('Could not find this route.', 404);
