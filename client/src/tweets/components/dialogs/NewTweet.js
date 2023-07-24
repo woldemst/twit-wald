@@ -1,8 +1,10 @@
 import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Input from "../../../shared/FormElements/Input";
 import Avatar from "../../../shared/UIElements/Avatar";
 import Card from "../../../shared/UIElements/Card";
-import {USERS} from '../../../user/pages/UserPage'
+// import {USERS} from '../../../user/pages/UserPage'
 import Button from "../../../shared/FormElements/Button";
 import { useForm } from "../../../shared/hooks/form-hook";
 
@@ -17,6 +19,25 @@ import locationIcon from '../../../images/location.svg'
 import "./NewTweet.scss";
 
 const NewTweet = () => {
+
+  const [USERS, setUSERS] = useState([])
+  
+  useEffect(()=> {
+
+    //function for fetching al of the user from backend
+    const fetchUsers = async () => {
+      try {
+          const response = await axios.get('http://localhost:8000/api/users')
+          setUSERS(response.data)
+          console.log(USERS);
+      } catch (err) {
+        console.log('Error fetching users', err);
+      }
+    }
+
+    fetchUsers()
+  }, [])
+
   const avatar = USERS.map((user) => user.image);
   const [formState, inputHandler] = useForm({
     newTweetContent: {

@@ -1,66 +1,14 @@
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+
+import { AuthContext } from "../../shared/context/auth-context";
 
 import UsersList from "../components/UsersList";
 
 import TweetList from "../../tweets/components/TweetList";
-import avatar from "../../images/avatar.jpeg";
-import image from "../../images/avatar.jpeg";
 
-export const USERS = [
-  {
-    id: "u1",
-    name: "Max Schwarz",
-    nickname: "maxschwarz",
-    image: avatar,
-    bio: "That's my official page",
-    location: "Germany",
-    link: "https://github.com/woldemst",
-    joined: 'November 2010',
-    followers: 10,
-    following: 89,
-    tweets: 3,
-  },
-  {
-    name:"Jane Smith",
-    nickname:"janesmith",
-    email: "", 
-    image:"https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800",
-    bio:"That's my official page","location":"Germany",
-    link:"https://github.com/jane",
-    joined:"August 2020",
-    followers: 1423,
-    following: 314,
-    tweets: 3
-  },
-  {
-    id: "u2",
-    name: "John Doe",
-    nickname: "johndoe",
-    image:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
-    bio: "That's my official page",
-    location: "Germany",
-    link: "https://github.com/johndoe",
-    joined: 'April 2013',
-    followers: 2,
-    following: 5,
-    tweets: 6,
-  },
-  {
-    id: "u3",
-    name: "Jane Smith",
-    nickname: "janesmith",
-    image:
-      "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800",
-    bio: "That's my official page",
-    location: "Germany",
-    link: "https://github.com/jane",
-    joined: 'August 2020',
-    followers: 1423,
-    following: 314,
-    tweets: 3,
-  },
-];
+import image from "../../images/avatar.jpeg";
 
 export const TWEETS = [
   {
@@ -123,13 +71,37 @@ export const TWEETS = [
 const UserPage = (props) => {
   const { userId } = useParams();
 
-  const loadedUser = USERS.find((u) => u.id === userId);
-  const loadedtweets = TWEETS.filter((t) => t.creatorId === userId);
+  const auth = useContext(AuthContext)
 
+  // const userId = auth.userId
+
+  const [fetchedUsers, setFetschedUsers] = useState([])
+  
+  useEffect(()=> {
+
+    //function for fetching al of the user from backend
+    const fetchUsers = async () => {
+      try {
+          const response = await axios.get('http://localhost:8000/api/users')
+          setFetschedUsers(response.data)
+          // console.log(response.data);
+      } catch (err) {
+        console.log('Error fetching users', err);
+      }
+    }
+
+    fetchUsers()
+  }, [userId])
+
+  const loadedUser = fetchedUsers.find((u) => u._id === userId) ;
+  // const loadedtweets = TWEETS.filter((t) => t.creatorId === userId);
+  // console.log(loadedUser);
+  // console.log(userId);
+  // console.log(fetchedUsers);
   return (
     <>
-      {loadedUser ? <UsersList items={[loadedUser]} /> : <p>User Not Found</p>}
-      <TweetList items={loadedtweets} />
+      {loadedUser ? <UsersList key={loadedUser._id} items={[loadedUser]} /> : <p>User Not Found</p>}
+      {/* <TweetList items={loadedtweets} /> */}
     </>
   );
 };

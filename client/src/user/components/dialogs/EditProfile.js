@@ -1,7 +1,10 @@
-import Input from "../../../shared/FormElements/Input";
-import Card from "../../../shared/UIElements/Card";
-import { useForm } from "../../../shared/hooks/form-hook";
 import { VALIDATOR_LINK, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../../shared/util/validators";
+import { useEffect, useLayoutEffect, useState } from "react";
+import axios from "axios";
+
+import Card from "../../../shared/UIElements/Card";
+import Input from "../../../shared/FormElements/Input";
+import { useForm } from "../../../shared/hooks/form-hook";
 
 const DUMMY_USERS = [
   {
@@ -34,8 +37,11 @@ const DUMMY_USERS = [
   },
 ];
 
+
 const EditProfile = (props) => {
+
   const identifiedUser = DUMMY_USERS.find((u) => u.id === props.userId);
+
   const [formState, inputHandler] = useForm(
     {
       name: {

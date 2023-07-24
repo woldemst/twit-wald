@@ -4,16 +4,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
 const API_URL = "http://localhost:8000/api";
 
-const generateJwtToken = userId => {
-  return jwt.sign({userId}, 'super-secret-key', {expiresIn: '1h'})
-}
-
 const getUsers = async (req, res, next) => {
   try {
     const users = await User.find({}, { password: 0 });
     res.json(users);
   } catch (err) {
-    console.log(err);
     res.status(500).json({ message: "Server error" });
   }
 };

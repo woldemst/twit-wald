@@ -12,7 +12,7 @@ const UsersList = (props) => {
     <div className="user-container">
       {props.items.map((user) => (
         <UserItem
-          key={user.id}
+          key={user._id}
           id={user.id}
           image={user.image}
           name={user.name}
