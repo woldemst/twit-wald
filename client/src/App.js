@@ -64,7 +64,7 @@ function App() {
           </div>
 
           {/* if not logged in START */}
-          <Modal
+          {/* <Modal
             show={!isLoggedIn}
             onClose={() => setIsLoggedIn()}
             contentClass="auth-item__modal-content"
@@ -78,7 +78,7 @@ function App() {
             // }
           >
             <Auth  />
-          </Modal>
+          </Modal> */}
           {/* if not logged in END */}
 
         </BrowserRouter>

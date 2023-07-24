@@ -21,6 +21,18 @@ export const USERS = [
     tweets: 3,
   },
   {
+    name:"Jane Smith",
+    nickname:"janesmith",
+    email: "", 
+    image:"https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800",
+    bio:"That's my official page","location":"Germany",
+    link:"https://github.com/jane",
+    joined:"August 2020",
+    followers: 1423,
+    following: 314,
+    tweets: 3
+  },
+  {
     id: "u2",
     name: "John Doe",
     nickname: "johndoe",

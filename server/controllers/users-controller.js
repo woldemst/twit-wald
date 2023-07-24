@@ -1,8 +1,12 @@
 const HttpError = require("../models/http-error");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-
+const jwt = require("jsonwebtoken")
 const API_URL = "http://localhost:8000/api";
+
+const generateJwtToken = userId => {
+  return jwt.sign({userId}, 'super-secret-key', {expiresIn: '1h'})
+}
 
 const getUsers = async (req, res, next) => {
   try {
@@ -56,7 +60,7 @@ const register = async (req, res, next) => {
     name: userName,
     email: email,
     password: hashedPassword,
-    tweets: [],
+    // tweets: [],
   });
 
   try {
@@ -122,11 +126,12 @@ const login = async (req, res, next) => {
       return next(error);
     }
 
+    const token =  generateJwtToken(identifiedUser._id)
     // res.json({
     //     userId: identifiedUser.id, 
     //     email: identifiedUser.email
     //  });
-    res.json(identifiedUser)
+    res.json(token)
 };
 
 exports.getUsers = getUsers;

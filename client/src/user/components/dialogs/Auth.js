@@ -125,9 +125,13 @@ const Auth = (props) => {
           password: formState.inputs.password.value
         })
 
-        auth.login(response.data._id)
+        const token = response.data; 
+
+        auth.login(token)
 
         // navigate('/')
+        console.log(auth);
+        console.log(token);
         props.onLogginSuccess()
       } catch (err) {
         console.log(err)
@@ -231,4 +235,5 @@ const Auth = (props) => {
 };
 
 export default Auth;
+
 
