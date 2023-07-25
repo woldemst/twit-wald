@@ -35,6 +35,11 @@ const TweetItem = (props) => {
   // states of delete functionality
   const [showDeleteDiolog, setShowDeleteDialog] = useState(false);
 
+  //Format the data as 'Month Year'
+    const formatDate = new Date(props.posted).toLocaleString("en-US", {
+      month: "long",
+      year: "numeric"
+    })
 
   return (
     <>
@@ -92,7 +97,7 @@ const TweetItem = (props) => {
                   <span className="name">{props.creatorName}</span>
                 </Link>
                 <span className="nickname">{props.creatorNickname}</span>
-                <span className="date">*{props.posted}</span>
+                <span className="date">*{formatDate}</span>
               </div>
             </div>
             <Dropdown options={options} onSelect={handleOptionSelect} />
