@@ -7,7 +7,7 @@ const Avatar = (props) => {
       <img
         src={props.image}
         alt={props.alt}
-        style={{ width: props.width, height: props.width }}
+        style={{ width: props.width || '135px', height: props.width || '135px' }}
       />
     </div>
   );

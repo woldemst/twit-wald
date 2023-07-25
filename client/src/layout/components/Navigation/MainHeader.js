@@ -9,17 +9,18 @@ import NewTweet from "../../../tweets/components/dialogs/NewTweet";
 import { AuthContext } from "../../../shared/context/auth-context";
 import logo from "../../../images/logo.svg";
 import "./MainHeader.scss";
+import AccountMenu from "../account/AccountMenu";
 
 const MainHeader = () => {
   const [showNewTweet, setShowNewTweet] = useState(false);
-  const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext);
 
   return (
     <>
       <Modal
         show={showNewTweet}
         onClose={() => setShowNewTweet(false)}
-        modalClassName='new-tweet'
+        modalClassName="new-tweet"
         header={
           <Button
             content="✕"
@@ -33,23 +34,28 @@ const MainHeader = () => {
       </Modal>
 
       <div className="column aside-left">
-        <div className="header-main">
-          <Link to="/">
-            <img src={logo} alt="" className="logo" />
-          </Link>
+        <div className="aside-container">
+          <div className="header-main">
+            <Link to="/">
+              <img src={logo} alt="" className="logo" />
+            </Link>
 
-          <Navigation />
-          
-          {auth.isLoggedIn && 
-            <Button
-              content="Tweet"
-              className="tweet"
-              onClick={() => setShowNewTweet(true)}
-            />
-          }
+            <Navigation />
+
+            {auth.isLoggedIn && (
+              <Button
+                content="Tweet"
+                className="tweet"
+                onClick={() => setShowNewTweet(true)}
+              />
+            )}
+          </div>
+
+          {auth.isLoggedIn && (
+            <AccountMenu />
+          )}
         </div>
       </div>
-
     </>
   );
 };

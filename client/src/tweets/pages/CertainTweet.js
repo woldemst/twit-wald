@@ -24,11 +24,11 @@ const CertainTweet = () => {
     fetchTweets()
   }, [])
 
-  console.log(fetchedTweets);
+  // console.log(fetchedTweets);
 
   const { tweetId } = useParams();
   const loadedtweet = fetchedTweets.filter((tweet) => tweet._id === tweetId);
-  console.log(loadedtweet);
+
   return <TweetPageList items={loadedtweet} />;
 };
 

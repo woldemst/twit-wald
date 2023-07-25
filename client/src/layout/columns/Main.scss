@@ -9,14 +9,16 @@
     .aside-left{
         width: 24%;
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        height: 100vh;
+        position: sticky;
+        top: 10px;
         
         .header-main{
-            max-width: 250px;
             min-width: 230px;
             height: max-content;
-            position: sticky;
-            top: 10px;
+            // position: sticky;
+            // top: 10px;
             
         }
         

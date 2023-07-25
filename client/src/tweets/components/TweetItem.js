@@ -86,7 +86,7 @@ const TweetItem = (props) => {
       <div className="tweet-container">
         <div className="creator-image">
           <Link to={`/${props.creatorId}`}>
-            <Avatar image={props.creatorImage} className="tweet-creator" />
+            <Avatar image={props.creatorImage} width="60px" height="60px" className="tweet-creator" />
           </Link>
         </div>
         <div className="tweet-content">

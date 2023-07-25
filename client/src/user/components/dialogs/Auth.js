@@ -143,7 +143,7 @@ const Auth = (props) => {
         })
 
 
-        console.log(response)
+        // console.log(response)
         
         navigate('/')
         // props.onLogginSuccess()

@@ -1,6 +1,14 @@
 .dropdown {
   position: relative;
   display: inline-block;
+
+  &-account{
+
+    .dropdown-options{
+      bottom: calc(100% + 10px);
+      top: auto;
+    }
+  }
 }
 
 .dropdown-header {

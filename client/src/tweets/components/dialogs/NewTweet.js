@@ -29,7 +29,7 @@ const NewTweet = () => {
       try {
           const response = await axios.get('http://localhost:8000/api/users')
           setUSERS(response.data)
-          console.log(USERS);
+
       } catch (err) {
         console.log('Error fetching users', err);
       }
@@ -62,7 +62,7 @@ const NewTweet = () => {
             <form className="tweet-form" onSubmit={tweetSubmitHandler}>
 
             <div className="container">
-              <Avatar image={avatar} className="new-tweet" />
+              <Avatar image={avatar} width="60px" height="60px" className="new-tweet" />
 
               <Input
                 id="newTweetContent"

@@ -77,6 +77,7 @@ const TweetPage = (props) => {
                 <Link to={`/${props.creatorId}`}>
                   <Avatar
                     image={props.creatorImage}
+                    width="60px" height="60px"
                     className="tweet-creator"
                   />
                 </Link>

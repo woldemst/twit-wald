@@ -70,8 +70,8 @@ const UpdateTweet = (props) => {
 
   const tweetSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
-    console.log(formState.inputs.content.value);
+    // console.log(formState.inputs);
+    // console.log(formState.inputs.content.value);
   };
 
   if (isLoading) {

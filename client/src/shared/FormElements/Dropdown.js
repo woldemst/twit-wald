@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Dropdown.scss";
 import Button from "./Button";
 
-const Dropdown = ({ options, onSelect }) => {
+const Dropdown = props => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -10,14 +10,14 @@ const Dropdown = ({ options, onSelect }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = (option) => {  
     setSelectedOption(option);
     setIsOpen(false);
-    onSelect(option);
+    props.onSelect(option);
   };
 
   return (
-    <div className={`dropdown dropdown-`}>
+    <div className={`dropdown dropdown-${props.className}`}>
       {/* // to toggle a dropdown */}
       <div className="dropdown-header" onClick={toggleDropdown}>
         <>
@@ -29,7 +29,7 @@ const Dropdown = ({ options, onSelect }) => {
 
       {isOpen && (
         <ul className="dropdown-options">
-          {options.map((option) => (
+          {props.options.map((option) => (
             <li
               key={option.value}
               onClick={() => handleOptionSelect(option)}

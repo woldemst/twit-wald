@@ -25,7 +25,7 @@ export default function Main() {
   }, [])
 
   const loadedtweets = fetchedTweets.map((t) => t)
-  console.log(fetchedTweets);
+  // console.log(fetchedTweets);
   return (
     <>
       <div className="column main-content">

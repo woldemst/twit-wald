@@ -1,0 +1,42 @@
+
+
+
+.account-menu__container{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    border-radius: 50px;
+    height: 56px;
+    padding: 0 10px;
+    &:hover{
+        background-color: #1d2025;
+        transition: all .1s;
+    }
+}
+
+.account-options__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.account-info_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    width: 100%;
+
+    p{
+        margin: 0;
+    }
+}
+
+.account-avatar__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

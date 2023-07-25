@@ -50,7 +50,7 @@ const UserPage = (props) => {
   const loadedtweets = fetchedTweets.filter((t) => t.creatorId === userId);
   // console.log(loadedUser);
   // console.log(userId);
-  console.log(fetchedTweets);
+  // console.log(fetchedTweets);
   return (
     <>
       {loadedUser ? <UsersList key={loadedUser._id} items={[loadedUser]} /> : <p>User Not Found</p>}
