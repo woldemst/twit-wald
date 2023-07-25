@@ -6,8 +6,8 @@ const TweetPageList = (props) => {
             {props.items.map(tweet => (
                 
                 <TweetPage
-                    key={tweet.id}
-                    id={tweet.id}
+                    key={tweet._id}
+                    id={tweet._id}
                     creatorId={tweet.creatorId}
                     creatorImage={tweet.creator.image}
                     creatorName={tweet.creator.name}
