@@ -76,6 +76,7 @@ const UserPage = (props) => {
   // const userId = auth.userId
 
   const [fetchedUsers, setFetschedUsers] = useState([])
+  const [fetchedTweets, setFetchedTweets] = useState([])
   
   useEffect(()=> {
 
@@ -90,18 +91,30 @@ const UserPage = (props) => {
       }
     }
 
+    const fetchTweets = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/tweets')
+        setFetchedTweets(response.data)
+      } catch (err) {
+        console.log('Error fetching tweets', err)
+        
+      }
+    }
+
+
+    fetchTweets()
     fetchUsers()
   }, [userId])
 
   const loadedUser = fetchedUsers.find((u) => u._id === userId) ;
-  // const loadedtweets = TWEETS.filter((t) => t.creatorId === userId);
+  const loadedtweets = fetchedTweets.filter((t) => t.creatorId === userId);
   // console.log(loadedUser);
   // console.log(userId);
-  // console.log(fetchedUsers);
+  console.log(fetchedTweets);
   return (
     <>
       {loadedUser ? <UsersList key={loadedUser._id} items={[loadedUser]} /> : <p>User Not Found</p>}
-      {/* <TweetList items={loadedtweets} /> */}
+      <TweetList key={loadedtweets._id} items={loadedtweets} />
     </>
   );
 };

@@ -17,8 +17,8 @@ const tweetList = (props) => {
         <div className="tweets">
             {props.items.map(tweet => (
                 <TweetItem
-                    key={tweet.id}
-                    id={tweet.id}
+                    key={tweet._id}
+                    id={tweet._id}
                     creatorId={tweet.creatorId}
                     creatorImage={tweet.creator.image}
                     creatorName={tweet.creator.name}
@@ -26,9 +26,6 @@ const tweetList = (props) => {
                     posted={tweet.postedDate}
                     description={tweet.description}
                     imageUrl={tweet.imageUrl}
-
-
-
                 />
             ))}
         </div>
