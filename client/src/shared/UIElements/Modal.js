@@ -34,6 +34,7 @@ const ModalOverlay = (props) => {
 };
 
 const Modal = (props) => {
+
   return (
     <>
       {props.show && <Backdrop onClick={props.onClose} />}

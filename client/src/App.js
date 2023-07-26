@@ -18,9 +18,10 @@ import "./App.scss";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [showAuthForm, setShowAuthForm] = useState(false);
-  
+
   const auth = useContext(AuthContext)
+  const [showAuthForm, setShowAuthForm] = useState(auth.isLoggedIn);
+  
   
   const [userId, setUserId] = useState(false)
   const [token, setToken] = useState(false)
@@ -28,7 +29,7 @@ function App() {
   const login = useCallback((uid, token) => {
     setToken(token)
     setUserId(uid)
-    // setIsLoggedIn(true)
+    setShowAuthForm(true)
 
     localStorage.setItem(
       "userData", 
@@ -41,7 +42,7 @@ function App() {
   const logout = useCallback(() => {
     setToken(null)
     setUserId(null)
-    // setIsLoggedIn(false)
+    setShowAuthForm(false)
 
     localStorage.removeItem("userData")
   }, [])
@@ -60,6 +61,10 @@ function App() {
 
   // }
 
+  
+
+
+  console.log(auth.isLoggedIn);
   return ( 
     <>
       <AuthContext.Provider value={{isLoggedIn:!!token, userId: userId, token: token, login:login, logout:logout}} >
@@ -85,10 +90,10 @@ function App() {
           </div>
 
           {/* if not logged in START */}
-          {/* <Modal
-            show={!isLoggedIn}
-            onClose={() => setIsLoggedIn()}
+          <Modal
+            show={!showAuthForm}
             contentClass="auth-item__modal-content"
+            onClose={() => setShowAuthForm(true)}
             // header={
             //   <Button
             //     content="✕"
@@ -99,7 +104,8 @@ function App() {
             // }
           >
             <Auth  />
-          </Modal> */}
+
+          </Modal>
           {/* if not logged in END */}
 
         </BrowserRouter>
