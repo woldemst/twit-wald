@@ -6,6 +6,9 @@ import Dropdown from "../../../shared/FormElements/Dropdown"
 import Avatar from "../../../shared/UIElements/Avatar";
 
 import './AccountMenu.scss'
+import Modal from "../../../shared/UIElements/Modal";
+import Button from "../../../shared/FormElements/Button";
+import LogOut from "../../../user/components/dialogs/account/LogOut";
 
 const AccountMenu = (props) => {
     const auth = useContext(AuthContext)
@@ -38,18 +41,17 @@ const AccountMenu = (props) => {
   const [selectedOption, setSelectedOption] = useState(null);
   
   const options = [
-
-    { value: "option1", label: `Log out @${identidiedUser?.nickname}`, onClick:() => auth.logout() }
+    { value: "option1", label: `Log out @${identidiedUser?.nickname}`, onClick:() => setShowLogoutDiolog(true) }
   ];
+  
+  // dropdown's trigger 
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
 
-    // dropdown's trigger 
-    const handleOptionSelect = (option) => {
-      setSelectedOption(option);
-    };
+  //Log out diolog window
+  const [showLogoutDiolog, setShowLogoutDiolog] = useState(false)
 
-    //Log out diolog window
-    const [showLogoutDiolog, setShowLogoutDiolog] = useState(false)
-    
 
   return (
     <>
@@ -67,6 +69,23 @@ const AccountMenu = (props) => {
           <Dropdown options={options} onSelect={handleOptionSelect} className="account" />
         </div>
       </div>
+
+      {/* Log out diolog  */}
+      <Modal
+        show={showLogoutDiolog}
+        headerClassName='warning__headline'
+        header={<h2>Log out of TwittWald?</h2>}
+        modalClassName='confirmation'
+        contentClass="delte-item__modal-content"
+        footer={<>
+          <div className="button-container">
+            <Button content='Log out' className='log_out' onClick={()=> auth.logout()} />
+            <Button content='Cancel' className='cancel' onClick={()=> setShowLogoutDiolog(false)} />
+          </div>
+        </>}
+        >
+          <LogOut />
+      </Modal>
     </>
   );
 };

@@ -6,7 +6,7 @@ import "./DeleteTweet.scss";
 const DeleteTweet = (props) => {
   return (
     <>
-      <Card className="delete-item__card">
+      <Card className="warning-card">
 
         <div className="warning">
           <div className="warning__content">

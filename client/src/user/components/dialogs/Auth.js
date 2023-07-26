@@ -128,7 +128,7 @@ const Auth = (props) => {
         // Store the token in localStorage 
         auth.login(response.data.userId, response.data.token)
 
-        // navigate('/')
+        navigate('/')
         props.onLogginSuccess()
       } catch (err) {
         console.log(err)
