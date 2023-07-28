@@ -19,61 +19,67 @@ import "./App.scss";
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext);
   const [showAuthForm, setShowAuthForm] = useState(auth.isLoggedIn);
-  
-  
-  const [userId, setUserId] = useState(false)
-  const [token, setToken] = useState(false)
+
+  const [userId, setUserId] = useState(false);
+  const [token, setToken] = useState(false);
 
   const login = useCallback((uid, token) => {
-    setToken(token)
-    setUserId(uid)
-    setShowAuthForm(true)
+    setToken(token);
+    setUserId(uid);
+    setShowAuthForm(true);
 
     localStorage.setItem(
-      "userData", 
-      JSON.stringify({userId: uid, token: token})
-    )
-
-  }, [])
-
+      "userData",
+      JSON.stringify({ userId: uid, token: token })
+    );
+  }, []);
 
   const logout = useCallback(() => {
-    setToken(null)
-    setUserId(null)
-    setShowAuthForm(false)
+    setToken(null);
+    setUserId(null);
+    setShowAuthForm(false);
 
-    localStorage.removeItem("userData")
-  }, [])
+    localStorage.removeItem("userData");
+  }, []);
 
-
-  useEffect(()=> {
-    const storedData = JSON.parse(localStorage.getItem('userData'))
-    if (storedData && storedData.token){
-      login(storedData.userId, storedData.token)
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    if (storedData && storedData.token) {
+      login(storedData.userId, storedData.token);
     }
-  }, [login])
+  }, [login]);
 
-  // for pop up to go to the start page 
+  // for pop up to go to the start page
   // const navigate = useNavigate()
   // const goToStartPage = ()=>{
 
   // }
 
-  
-
+  const deprecateClick = (event) => {
+    event.stopPropagation();
+  }
 
   console.log(auth.isLoggedIn);
-  return ( 
+  return (
     <>
-      <AuthContext.Provider value={{isLoggedIn:!!token, userId: userId, token: token, login:login, logout:logout}} >
+      <AuthContext.Provider
+        value={{
+          isLoggedIn: !!token,
+          userId: userId,
+          token: token,
+          login: login,
+          logout: logout,
+        }}
+      >
         <BrowserRouter>
           <div className="main-container">
             <MainHeader />
             <main className="content">
               <div className="main-feed column">
                 <Routes>
+                  
                   {/* <Route path="/"  element={<Start />} exact /> */}
                   <Route path="/" element={<Main />} exact />
                   <Route path="/:userId" element={<UserPage />} exact />
@@ -88,12 +94,13 @@ function App() {
               </div>
             </main>
           </div>
-
           {/* if not logged in START */}
           <Modal
             show={!showAuthForm}
             contentClass="auth-item__modal-content"
-            onClose={() => setShowAuthForm(true)}
+            modalClassName="auth"
+            onClose={() => deprecateClick }
+            bgClass="auth"
             // header={
             //   <Button
             //     content="✕"
@@ -103,11 +110,9 @@ function App() {
             //   />
             // }
           >
-            <Auth  />
-
+            <Auth />
           </Modal>
           {/* if not logged in END */}
-
         </BrowserRouter>
       </AuthContext.Provider>
     </>

@@ -3,7 +3,7 @@ import './Backdrop.scss'
 
 const Backdrop = (props) => {
   return ReactDOM.createPortal(
-    <div className="backdrop" onClick={props.onClick}></div>,
+    <div className={`backdrop backdrop-${props.bgClass}`} onClick={props.onClick}></div>,
     document.getElementById("backdrop-hook")
   );
 };

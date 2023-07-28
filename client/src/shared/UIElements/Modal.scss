@@ -6,6 +6,7 @@
 .modal {
   // width: 600px;
   // height: 50%;
+  overflow: hidden;
   z-index: 100;
   position: fixed;
   top: 50%;
@@ -19,7 +20,7 @@
   // min-height: 280px;
   max-height: 650px;
   width: 600px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   position: fixed;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 
@@ -35,6 +36,10 @@
   &-new-tweet{
     top: 10%;
   }
+
+  // &-auth{
+   
+  // }
 
 }
 

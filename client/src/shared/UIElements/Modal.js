@@ -37,7 +37,7 @@ const Modal = (props) => {
 
   return (
     <>
-      {props.show && <Backdrop onClick={props.onClose} />}
+      {props.show && <Backdrop bgClass={props.bgClass} onClick={props.onClose} />}
       <CSSTransition in={props.show} timeout={0} unmountOnExit className="modal">
         <ModalOverlay {...props} />
       </CSSTransition>
