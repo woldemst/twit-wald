@@ -49,28 +49,78 @@ const Input = (props) => {
     dispatch({type: 'TOUCH'})
   }
 
-  const element =
-    props.element === "input" ? (
-      <input
-        id={props.id}
-        type={props.type}
-        name={props.name}
-        placeholder={props.placeholder}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
-    ) : (
-      <textarea
-        id={props.id}
-        name={props.name}
-        placeholder={props.placeholder}
-        rows={props.rows || 3}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
-    );
+  // const element =
+  //   props.element === "input" ? (
+  //     <input
+  //       id={props.id}
+  //       type={props.type}
+  //       name={props.name}
+  //       placeholder={props.placeholder}
+  //       onChange={changeHandler}
+  //       onBlur={touchHandler}
+  //       value={inputState.value}
+  //     />
+  //   ) : (
+  //     <textarea
+  //       id={props.id}
+  //       name={props.name}
+  //       placeholder={props.placeholder}
+  //       rows={props.rows || 3}
+  //       onChange={changeHandler}
+  //       onBlur={touchHandler}
+  //       value={inputState.value}
+  //     />
+  //     );
+
+
+      const renderInputElement = () => {
+        switch (props.element) {
+          case "input":
+            return (
+              <input
+                id={props.id}
+                type={props.type}
+                name={props.name}
+                placeholder={props.placeholder}
+                onChange={changeHandler}
+                onBlur={touchHandler}
+                value={inputState.value}
+              />
+            );
+          case "textarea":
+            return (
+              <textarea
+                id={props.id}
+                name={props.name}
+                placeholder={props.placeholder}
+                rows={props.rows || 3}
+                onChange={changeHandler}
+                onBlur={touchHandler}
+                value={inputState.value}
+              />
+            );
+          case "select":
+            return (
+              <select
+                id={props.id}
+                name={props.name}
+                onChange={changeHandler}
+                onBlur={touchHandler}
+                value={inputState.value}
+              >
+                {props.options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            );
+          default:
+            return null;
+        }
+      };
+    
+
 
     const charCount = inputState.value.length;
     const maxChars = props.maxChars; // Change the maximum character limit here
@@ -85,7 +135,8 @@ const Input = (props) => {
         }`}
       >
         <label htmlFor={props.id}>{props.label}</label>
-        {element}
+        {/* {element} */}
+        {renderInputElement()}
         {props.maxChars && 
           <div className="char-counter__container">
             <div className="counter">
