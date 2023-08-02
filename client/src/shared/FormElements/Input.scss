@@ -34,6 +34,15 @@ $placeholder-color: #657786;
 
     transition: all 0.2s;
   }
+
+  &.select{
+    label {
+      top: 8px;
+      font-size: 14px;
+      left: 12px;
+    }
+  }
+
   select,
   textarea,
   input {
