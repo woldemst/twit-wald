@@ -15,7 +15,7 @@ const getUsers = async (req, res, next) => {
 
 const register = async (req, res, next) => {
   // destructuring assignment from body
-  const { userName, email, password } = req.body;
+  const { userName, email, password, birthYear, birthMonth, birthDay} = req.body;
 
   // check if a user with the same email exists using the User model
   let existingUser;
@@ -44,10 +44,16 @@ const register = async (req, res, next) => {
   } catch (err) {
     const error = new HttpError(
       "Could not create user, pleadse try again.",
-      500
+      500 
     );
     return next(error);
   }
+
+  // get today's date 
+    // Get today's date
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  
 
   //create new user
 
@@ -55,7 +61,11 @@ const register = async (req, res, next) => {
     name: userName,
     email: email,
     password: hashedPassword,
-    // tweets: [],
+    birthYear: birthYear, 
+    birthMonth: birthMonth,
+    birthDay: birthDay,
+    joinedDate: formattedDate, 
+
   });
 
   try {
@@ -68,7 +78,7 @@ const register = async (req, res, next) => {
     return next(error);
   }
 
-  let token;
+  let token; 
 
   try {
     token = jwt.sign(
@@ -87,7 +97,11 @@ const register = async (req, res, next) => {
 
   res
   .status(201)
-  .json({userId: createdUser.id, email: createdUser.email})
+  .json({
+    userId: createdUser.id, 
+    email: createdUser.email,
+    token: token
+  })
 };
 
 const login = async (req, res, next) => {

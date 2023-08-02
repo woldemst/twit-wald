@@ -30,5 +30,23 @@
   }
 }
 
+.select-date__container{
+  display: flex;
+  // justify-content: space-between;
+
+  // select {
+  //   margin-right: 10px;
+  // }
+
+  .day{
+    width: 20%;
+  }
+  .month{ 
+    width: 50%;
+  }
+  .year{
+    width: 25%;
+  }
+}
 
 
