@@ -1,63 +1,56 @@
-import { VALIDATOR_LINK, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../../shared/util/validators";
-import { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import {
+  VALIDATOR_LINK,
+  VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
+} from "../../../shared/util/validators";
 
 import Card from "../../../shared/UIElements/Card";
 import Input from "../../../shared/FormElements/Input";
 import { useForm } from "../../../shared/hooks/form-hook";
-
-const DUMMY_USERS = [
-  {
-    id: "profile",
-    name: "Max Schwarz",
-    image:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
-    textBio: "That's my official page",
-    location: "Germany",
-    link: "https://github.com/woldemst",
-    tweets: 3,
-  },
-  {
-    id: "u2",
-    name: "John Doe",
-    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
-    textBio: "That's my official page",
-    location: "Germany",
-    link: "https://github.com/johndoe",
-    tweets: 6,
-  },
-  {
-    id: "u3",
-    name: "Jane Smith",
-    image: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=800",
-    textBio: "That's my official page",
-    location: "Germany",
-    link: "https://github.com/jane",
-    tweets: 3,
-  },
-];
-
+import { AuthContext } from "../../../shared/context/auth-context";
 
 const EditProfile = (props) => {
+  const auth = useContext(AuthContext);
 
-  const identifiedUser = DUMMY_USERS.find((u) => u.id === props.userId);
+  // const [fetchedUsers, setFetchedUsers] = useState([]);
+
+  // useEffect(() => {
+  //   //function for fetching  of all users db
+  //   //function for fetching al of the user from backend
+  //   const fetchUsers = async () => {
+  //     try {
+  //         const response = await axios.get('http://localhost:8000/api/users')
+  //         setFetchedUsers(response.data)
+  //         // console.log(response.data);
+  //     } catch (err) {
+  //       console.log('Fetching users failed', err);
+  //     }
+  //   }
+
+  //   fetchUsers();
+  // }, [auth.userId]);
+  // console.log(fetchedUsers);
+
+  // const identifiedUser = fetchedUsers.find((u) => u._id === auth.userId);
 
   const [formState, inputHandler] = useForm(
     {
-      name: {
-        value: identifiedUser.name,
+      userName: {
+        value: props.userName,
         isValid: true,
       },
-      textBio: {
-        value: identifiedUser.textBio,
+      bio: {
+        value: props.bio,
         isValid: true,
       },
       location: {
-        value: identifiedUser.location,
+        value: props.location,
         isValid: true,
       },
       link: {
-        value: identifiedUser.link,
+        value: props.link,
         isValid: true,
       },
     },
@@ -69,67 +62,63 @@ const EditProfile = (props) => {
       <Card className="edit-profile">
         <form className="edit-form">
           <Input
-            id="name"
-            name="name"
+            id="userName"
+            name="userName"
             type="text"
             element="input"
-            className='border'
+            className="border"
             label="Name"
-            maxChars='50'
+            maxChars="50"
             onInput={inputHandler}
             validators={[VALIDATOR_MINLENGTH(4)]}
             errorText="Please enter a valid user name"
-            initialValue={formState.inputs.name.value}
-            initialValid={formState.inputs.name.isValid}
+            initialValue={formState.inputs.userName.value}
+            initialValid={formState.inputs.userName.isValid}
           />
 
           <Input
-            id="textBio"
+            id="bio"
             element="input"
-            className='border'
+            className="border"
             type="text"
-            name="textBio"
+            name="bio"
             label="Bio"
-            maxChars='160'
+            maxChars="160"
             onInput={inputHandler}
             errorText="Please enter a valid text"
             validators={[VALIDATOR_REQUIRE()]}
-            initialValue={formState.inputs.textBio.value}
-            initialValid={formState.inputs.textBio.isValid}
-
+            initialValue={formState.inputs.bio.value}
+            initialValid={formState.inputs.bio.isValid}
           />
 
           <Input
             id="location"
             element="input"
-            className='border'
+            className="border"
             type="text"
             name="location"
             label="Location"
-            maxChars='30'
+            maxChars="30"
             onInput={inputHandler}
             errorText="Please enter a valid Location"
             validators={[VALIDATOR_REQUIRE()]}
             initialValue={formState.inputs.location.value}
             initialValid={formState.inputs.location.isValid}
-
           />
-
 
           <Input
             id="link"
-            className='border'
+            className="border"
             element="input"
             type="text"
             name="link"
             label="Link"
-            maxChars='100'
+            maxChars="100"
             onInput={inputHandler}
             errorText="Please enter a valid Link"
             validators={[VALIDATOR_LINK()]}
             initialValue={formState.inputs.link.value}
             initialValid={formState.inputs.link.isValid}
-
           />
         </form>
       </Card>
