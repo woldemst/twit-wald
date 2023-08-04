@@ -205,12 +205,11 @@ const login = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   const userId = req.params.userId;
-
-  // const {userName, birthYear, birthMonth, birthDay,  bio, location, link} = req.body;
-  const {userName} = req.body;
+  const {userName, birthYear, birthMonth, birthDay,  bio, location, link} = req.body;
 
   let userToUpdate; 
   try {
+    // find user by their userId
     userToUpdate = await User.findById(userId)
 
   } catch (err) {
@@ -222,20 +221,22 @@ const updateUser = async (req, res, next) => {
   }
 
   if (!userToUpdate){
-    const error = HttpError('User not found.', 404)
+    const error = new HttpError('User not found.', 404)
     return next(error)
   }
 
+  // Update user profile data 
   userToUpdate.name = userName;
-  // userToUpdate.birthYear = birthYear;
-  // userToUpdate.birthMonth = birthMonth;
-  // userToUpdate.birthDay = birthDay; 
-  // userToUpdate.bio = bio; 
-  // userToUpdate.location = location; 
-  // userToUpdate.link = link; 
+  userToUpdate.birthYear = birthYear;
+  userToUpdate.birthMonth = birthMonth;
+  userToUpdate.birthDay = birthDay; 
+  userToUpdate.bio = bio; 
+  userToUpdate.location = location; 
+  userToUpdate.link = link; 
 
 
   try {
+    // save the update user data 
     await userToUpdate.save()
   } catch (err) {
     const error = new HttpError(
@@ -247,9 +248,10 @@ const updateUser = async (req, res, next) => {
 
   res
   .status(200)
-  .json({message: 'User successfuly updated.', user: userToUpdate })
+  .json({ user: userToUpdate })
 }
 
+// export of all functions
 exports.getUsers = getUsers;
 exports.getUserById = getUserById;
 exports.register = register;
