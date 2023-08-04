@@ -13,6 +13,33 @@ const getUsers = async (req, res, next) => {
   }
 };
 
+const getUserById = async (req, res, next) => {
+  const userId = req.params.userId;
+
+  let user;
+
+  try {
+    user = await User.findById(userId)
+    
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not find user, please try again.",
+      500 
+    );
+    return next(error);
+  }
+
+  if (!user){
+    const error = new HttpError(
+      "Could not find user for the provided id.",
+      404 
+    );
+    return next(error);
+  }
+
+  res.json({user: user.toObject({getters: true})})
+}
+
 const register = async (req, res, next) => {
   // destructuring assignment from body
   const { userName, email, password, birthYear, birthMonth, birthDay} = req.body;
@@ -50,13 +77,11 @@ const register = async (req, res, next) => {
   }
 
   // get today's date 
-    // Get today's date
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
-  
+  // Get today's date
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 
   //create new user
-
   const createdUser = new User({
     name: userName,
     email: email,
@@ -64,7 +89,7 @@ const register = async (req, res, next) => {
     birthYear: birthYear, 
     birthMonth: birthMonth,
     birthDay: birthDay,
-    joinedDate: formattedDate, 
+    joinedDate: formattedDate
 
   });
 
@@ -178,6 +203,55 @@ const login = async (req, res, next) => {
      });
 };
 
+const updateUser = async (req, res, next) => {
+  const userId = req.params.userId;
+
+  // const {userName, birthYear, birthMonth, birthDay,  bio, location, link} = req.body;
+  const {userName} = req.body;
+
+  let userToUpdate; 
+  try {
+    userToUpdate = await User.findById(userId)
+
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not find user, please try again.",
+      500 
+    );
+    return next(error);
+  }
+
+  if (!userToUpdate){
+    const error = HttpError('User not found.', 404)
+    return next(error)
+  }
+
+  userToUpdate.name = userName;
+  // userToUpdate.birthYear = birthYear;
+  // userToUpdate.birthMonth = birthMonth;
+  // userToUpdate.birthDay = birthDay; 
+  // userToUpdate.bio = bio; 
+  // userToUpdate.location = location; 
+  // userToUpdate.link = link; 
+
+
+  try {
+    await userToUpdate.save()
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong, could not update user, please try again.",
+      500 
+    );
+    return next(error);
+  }
+
+  res
+  .status(200)
+  .json({message: 'User successfuly updated.', user: userToUpdate })
+}
+
 exports.getUsers = getUsers;
+exports.getUserById = getUserById;
 exports.register = register;
 exports.login = login;
+exports.updateUser = updateUser; 
