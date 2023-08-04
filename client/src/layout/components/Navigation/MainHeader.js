@@ -7,7 +7,7 @@ import Modal from "../../../shared/UIElements/Modal";
 import NewTweet from "../../../tweets/components/dialogs/NewTweet";
 
 import { AuthContext } from "../../../shared/context/auth-context";
-import logo from "../../../images/logo.svg";
+import logo from "../../../images/logo.png";
 import "./MainHeader.scss";
 import AccountMenu from "../account/AccountMenu";
 

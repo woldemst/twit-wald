@@ -1,12 +1,14 @@
-import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+
+import { useForm } from "../../../shared/hooks/form-hook";
+import { VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
+
+import { AuthContext } from "../../../shared/context/auth-context";
 import Input from "../../../shared/FormElements/Input";
 import Avatar from "../../../shared/UIElements/Avatar";
 import Card from "../../../shared/UIElements/Card";
-// import {USERS} from '../../../user/pages/UserPage'
 import Button from "../../../shared/FormElements/Button";
-import { useForm } from "../../../shared/hooks/form-hook";
 
 import globusIcon from '../../../images/globus.svg'
 import imageIcon from '../../../images/image.svg'
@@ -19,16 +21,18 @@ import locationIcon from '../../../images/location.svg'
 import "./NewTweet.scss";
 
 const NewTweet = () => {
+  const auth = useContext(AuthContext)
 
-  const [USERS, setUSERS] = useState([])
+  const [fetchedUsers, setFetchedUsers] = useState([])
   
+
   useEffect(()=> {
 
     //function for fetching al of the user from backend
     const fetchUsers = async () => {
       try {
           const response = await axios.get('http://localhost:8000/api/users')
-          setUSERS(response.data)
+          setFetchedUsers(response.data)
 
       } catch (err) {
         console.log('Error fetching users', err);
@@ -38,7 +42,8 @@ const NewTweet = () => {
     fetchUsers()
   }, [])
 
-  const avatar = USERS.map((user) => user.image);
+  const identifiedUser = fetchedUsers.find(u => u._id === auth.userId)
+
   const [formState, inputHandler] = useForm({
     newTweetContent: {
       value: "",
@@ -62,7 +67,7 @@ const NewTweet = () => {
             <form className="tweet-form" onSubmit={tweetSubmitHandler}>
 
             <div className="container">
-              <Avatar image={avatar} width="60px" height="60px" className="new-tweet" />
+              <Avatar image={identifiedUser?.image} width="60px" height="60px" className="new-tweet" />
 
               <Input
                 id="newTweetContent"

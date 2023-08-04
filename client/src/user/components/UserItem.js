@@ -48,7 +48,19 @@ const UserItem = (props) => {
           </div>
         }
       >
-        <EditProfile userId={props.id} />
+        <EditProfile 
+          userId={props._id}
+          image={props.image}
+          name={props.name}
+          nickname={props.nickname}
+          bio={props.bio}
+          location={props.location}
+          link={props.link}
+          joined={props.joined}
+          followers={props.followers}
+          following={props.following}
+          tweetCount={props.tweets}
+        />
       </Modal>
 
       <div className="user-profile">

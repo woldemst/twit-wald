@@ -61,7 +61,7 @@ function App() {
     event.stopPropagation();
   }
 
-  console.log(auth.isLoggedIn);
+  // console.log(auth.isLoggedIn);
   return (
     <>
       <AuthContext.Provider

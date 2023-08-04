@@ -30,9 +30,9 @@ const AccountMenu = (props) => {
     fetchUsers()
     }, [])
 
-  const identidiedUser = fetchedUsers.find(u => u._id === auth.userId)
-  // const mappedUser = identidiedUser.map(u => u.image)
-  console.log(identidiedUser);
+  const identifiedUser = fetchedUsers.find(u => u._id === auth.userId)
+  // const mappedUser = identifiedUser.map(u => u.image)
+  // console.log(identifiedUser);
 
 
 
@@ -41,7 +41,7 @@ const AccountMenu = (props) => {
   const [selectedOption, setSelectedOption] = useState(null);
   
   const options = [
-    { value: "option1", label: `Log out @${identidiedUser?.nickname}`, onClick:() => setShowLogoutDiolog(true) }
+    { value: "option1", label: `Log out @${identifiedUser?.nickname}`, onClick:() => setShowLogoutDiolog(true) }
   ];
   
   // dropdown's trigger 
@@ -57,12 +57,12 @@ const AccountMenu = (props) => {
     <>
       <div className="account-menu__container">
         <div className="account-avatar__container">
-            <Avatar image={identidiedUser?.image} width="45px" height="45px" />
+            <Avatar image={identifiedUser?.image} width="45px" height="45px" />
         </div>
 
         <div className="account-info_container">
-          <p>{identidiedUser?.name}</p>
-          <p>@{identidiedUser?.nickname}</p>
+          <p>{identifiedUser?.name}</p>
+          <p>{identifiedUser?.nickname && "@"+identifiedUser.nickname}</p>
         </div>
         
         <div className="account-options__container">
